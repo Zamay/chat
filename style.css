@@ -1,0 +1,107 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 900px;
+    min-width: 700px;
+    height: 900px;
+    margin: 0 auto;
+    background: #f4f4f4;
+}
+
+.header{
+    width: 860px;
+    height: 80px;
+    background: #24bcde;
+    padding: 20px;
+    margin: 0 auto 30px;
+}
+
+.online_for,
+.local_time,
+.edit_pers,
+.privat_mes{
+    float: left;
+    clear: both;
+}
+.head_h4{
+    float: right;
+    font-size: 50px;
+    margin-top: -55px;
+}
+
+.edit_pers{
+    margin-top: 10px;
+}
+
+/* end header*/
+/* left_bar */
+.left_bar{
+    width: 28%;
+    height: 500px;
+    background: #24bcde;
+    float: left;
+    margin-right: 2%;
+}
+
+.show_list{
+    height: 430px;
+    background: #bcb8b8;
+    margin: 13px;
+    padding: 10px 0 10px 10px;
+}
+.online{
+    padding-left: 15px;
+}
+.user{
+    text-decoration: none;
+}
+
+/* end left_bar */
+
+.main{
+    width: 70%;
+    height: 650px;
+    background: #e0e1ff;
+    float: left;
+}
+
+.main_head{
+    width: 100%;
+    height: 30px;
+}
+.tab{
+    width: 200px;
+    height: 30px;
+    float: left;
+    border: 1px solid;
+    text-align: center;
+    line-height: 30px;
+}
+.main_cont{
+    width: 96%;
+    height: 300px;
+    padding: 2%;
+    background: #dcbfbf;
+}
+
+textarea{
+    height: 115px;
+    width: 600px;
+    padding: 15px;
+    border: 0;
+}
+
+.button{
+    float: right;
+    width: 80px;
+    height: 30px;
+    margin: 15px;
+}
+.info{
+    float: left;
+    margin: 15px;
+}
