@@ -4,18 +4,22 @@
     margin: 0;
     padding: 0;
 }
+html{
+  height: 100%;
+}
 a:active {
     color: #000; /* Цвет активной ссылки */
 }
 
 body{
-    background: linear-gradient(40deg, #D999B9, #B8B3E9 ,#8DD0D6, #5CDBDB);
+    background: linear-gradient(40deg, #D999B9, #B8B3E9 ,#8DD0D6, #5CDBDB) no-repeat;
+    height: 90%;
 }
 
 .container{
     width: 902px;
     min-width: 700px;
-    height: 850px;
+    height: 790px;
     margin: 0 auto;
 }
 /* Шапка */
@@ -92,7 +96,7 @@ body{
 
 .main{
     width: 70%;
-    height: 650px;
+    height: 640px;
     float: right;
 }
   /*head tags*/
