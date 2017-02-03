@@ -76,6 +76,11 @@ window.onload = function () {
         $(this).parent().parent().remove();
 
     });
+
+    $(document).on('click', '.btn ', function () {
+        $(this).toggleClass("form_active");
+
+    });
 };
 
 
