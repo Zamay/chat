@@ -46,24 +46,34 @@ window.onload = function () {
             $('.info>ul>li')[2].innerHTML = (whitespaces + ' whitespace characters entered');
 
 
-            var marks  = $(this).val().split(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/).length-1;
-            $('.info>ul>li')[3].innerHTML = (marks  + ' punttuation marks entered');
+            var marks = $(this).val().split(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/).length - 1;
+            $('.info>ul>li')[3].innerHTML = (marks + ' punttuation marks entered');
 
         });
     })();
 
 
-    $(document).on('click', '.addUser', function() {
+    // add User для проверки .
+    $(document).on('click', '.addUser', function () {
         var usersOnline = $(".show_list>ul>li").length + 1;
 
-        var myLi = $('<li>', {
-        }).appendTo('.show_list ul');
+        var myLi = $('<li>', {}).appendTo('.show_list ul');
 
         var myA = $('<a>', {
             class: 'user',
             href: '#',
             text: 'New user ' + usersOnline
-        }).appendTo('.show_list ul li:last');
+        }).appendTo('.show_list li:last');
+
+        var myIcon = $('<i>', {
+            class: 'close_user',
+            text: ' [x]'
+        }).appendTo('.show_list li a:last');
+    });
+
+    // delete User 
+    $(document).on('click', '.close_user', function () {
+        $(this).parent().parent().remove();
 
     });
 };

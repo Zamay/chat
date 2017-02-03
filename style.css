@@ -76,6 +76,7 @@ body{
     border-radius: 3px;
     background: #efefef;
     clear: both;
+    overflow-x: auto;
 }
 .show_list ul{
     list-style: none;
