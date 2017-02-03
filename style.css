@@ -173,6 +173,9 @@ textarea{
     float: left;
     margin: 15px;
 }
+.info ul{
+    list-style: none;
+}
 .format{
     float: left;
     padding-top: 15px;
