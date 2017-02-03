@@ -27,7 +27,7 @@
     <!-- Left bar -->
     <div class="left_bar">
         <p class="online">Online :</p> <i title="add User" class="addUser">+</i>
-        <div class="show_list">
+        <div class="list_user">
             <ul>
                 <li><a href="#" class="user">Jowh Brein</a></li>
                 <li><a href="#" class="user">Sasha Pull</a></li>
@@ -40,52 +40,80 @@
     <!-- main -->
     <div class="main">
         <!-- закладки -->
-        <div class="main_head">
-            <ul>
-                <li><a href="" class="tab tab_active">Main menu</a></li>
-                <li><a href="" class="tab">Chat with Alison (2)<span class="close">x</span></a></li>
-                <li><a href="" class="tab">Chat with Den (3)<span class="close">x</span></a></li>
-            </ul>
-        </div>
+        <div class="tab-container">
 
-        <!-- Контент -->
-        <div class="main_cont">
-            <div class="main_cont_text">
-                <p><b>Jogn Snow:</b> Hi!</p>
-                <p><b>Sasha Pull:</b> hello))</p>
-                <p><b>Jogn Snow: </b> ky</p>
-                <p><b>Alison Black: </b> привет</p>
+            <!--tabs-->
+            <div class="wrap-tabs">
+                <ul class="tabs">
+                    <li class="main_menu">
+                        <a href="#main_menu">Mein menu</a>
+                    </li>
+                    <li class="tab1">
+                        <a href="#tab1">Jogn Snow <i class="ion-close-circled"></i></a>
+                    </li>
+                    <li class="tab2">
+                        <a href="#tab2">Sasha Pull <i class="ion-close-circled"></i></a>
+                    </li>
+                    <li class="tab3">
+                        <a href="#tab3">Alison Black <i class="ion-close-circled"></i></a>
+                    </li>
+
+                </ul>
             </div>
+
+            <!-- Контент -->
+            <div class="main_cont">
+                <div class="wrap-tab-content">
+                    <div id="main_menu">
+                        <p><b>Jogn Snow:</b> Hi!</p>
+                        <p><b>Sasha Pull:</b> hello))</p>
+                        <p><b>Jogn Snow: </b> ky</p>
+                        <p><b>Alison Black: </b> привет</p>
+                    </div>
+                    <div id="tab1">
+                        <p><b>Jogn Snow:</b> Hi!</p>
+                    </div>
+                    <div id="tab2">
+                        <p><b>Sasha Pull:</b> hello))</p>
+                    </div>
+                    <div id="tab3">
+                        <p><b>Alison Black: </b> привет</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="textarea">
+                <textarea name="" id="textarea" cols="30" rows="10" placeholder="Тут может быть ваш текст"></textarea>
+            </div>
+
+            <!--footer-->
+            <div class="info">
+                <ul>
+                    <li class="info_">0 characters entered</li>
+                    <li class="info_">0 letters entered</li>
+                    <li class="info_">0 whitespace characters entered</li>
+                    <li class="info_">0 punttuation marks entered</li>
+                </ul>
+            </div>
+
+            <!-- кнопки  -->
+            <div class="format">
+                <button type="button" class="btn form_active">B</button>
+                <button type="button" class="btn">I</button>
+                <button type="button" class="btn">U</button>
+                <button type="button" class="btn">Link</button>
+            </div>
+
+            <!--Отправить-->
+            <button type="button" class="button">Send</button>
+
+
         </div>
-
-
-        <textarea name="" id="textarea" cols="30" rows="10" placeholder="Тут может быть ваш текст"></textarea>
-
-        <!--footer-->
-        <div class="info">
-            <ul>
-                <li class="info_">0 characters entered</li>
-                <li class="info_">0 letters entered</li>
-                <li class="info_">0 whitespace characters entered</li>
-                <li class="info_">0 punttuation marks entered</li>
-            </ul>
-        </div>
-
-        <!-- кнопки  -->
-        <div class="format">
-            <button type="button" class="btn form_active">B</button>
-            <button type="button" class="btn">I</button>
-            <button type="button" class="btn">U</button>
-            <button type="button" class="btn">Link</button>
-        </div>
-
-        <!--Отправить-->
-        <button type="button" class="button">Send</button>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
+        <script src="js/time_user_.js"></script>
+        <script src="js/tabs.js"></script>
     </div>
-
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
-<script src="js/time_user_.js"></script>
 </body>
 </html>

@@ -27,7 +27,7 @@ window.onload = function () {
     //пользователей онлайн
     (function () {
 
-        var usersOnline = $(".show_list>ul>li").length;
+        var usersOnline = $(".list_user>ul>li").length;
         $(".online")['0'].innerHTML = ("Online: " + usersOnline );
         window.setTimeout(arguments.callee, 1);
     })();
@@ -55,23 +55,23 @@ window.onload = function () {
 
     // add User для проверки .
     $(document).on('click', '.addUser', function () {
-        var usersOnline = $(".show_list>ul>li").length + 1;
+        var usersOnline = $(".list_user>ul>li").length + 1;
 
-        var myLi = $('<li>', {}).appendTo('.show_list ul');
+        var myLi = $('<li>', {}).appendTo('.list_user ul');
 
         var myA = $('<a>', {
             class: 'user',
             href: '#',
             text: 'New user ' + usersOnline
-        }).appendTo('.show_list li:last');
+        }).appendTo('.list_user li:last');
 
         var myIcon = $('<i>', {
             class: 'close_user',
             text: ' [x]'
-        }).appendTo('.show_list li a:last');
+        }).appendTo('.list_user li a:last');
     });
 
-    // delete User 
+    // delete User
     $(document).on('click', '.close_user', function () {
         $(this).parent().parent().remove();
 
