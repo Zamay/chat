@@ -29,7 +29,7 @@ window.onload = function () {
 
         var usersOnline = $(".show_list>ul>li").length;
         $(".online")['0'].innerHTML = ("Online: " + usersOnline );
-
+        window.setTimeout(arguments.callee, 1);
     })();
 
     //колво символов
@@ -52,4 +52,27 @@ window.onload = function () {
         });
     })();
 
+
+    $(document).on('click', '.addUser', function() {
+        var usersOnline = $(".show_list>ul>li").length + 1;
+
+        var myLi = $('<li>', {
+        }).appendTo('.show_list ul');
+
+        var myA = $('<a>', {
+            class: 'user',
+            href: '#',
+            text: 'New user ' + usersOnline
+        }).appendTo('.show_list ul li:last');
+
+    });
 };
+
+
+
+
+
+
+
+
+

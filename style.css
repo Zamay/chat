@@ -75,6 +75,7 @@ body{
     border: 1px solid;
     border-radius: 3px;
     background: #efefef;
+    clear: both;
 }
 .show_list ul{
     list-style: none;
@@ -87,11 +88,16 @@ body{
 }
 .online{
     margin: 8px 0 -10px 25px;
+    float: left;
 }
 .user{
     text-decoration: none;
 }
-
+.addUser {
+    float: right;
+    margin: 8px 15px 0 ;
+    cursor: pointer;
+}
 /* end left_bar */
 
 .main{
