@@ -60,6 +60,8 @@ $(function() {
         $(this.hash).show();
         $(".tabs li a").removeClass("active");
         $(this).addClass("active");
+
+        return false;
     });
 
 
@@ -68,5 +70,4 @@ $(function() {
         var tabHref = $(this).parent().attr('href');
         $(tabHref).remove();
     });
-
 });
