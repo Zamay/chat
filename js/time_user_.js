@@ -57,15 +57,15 @@ window.onload = function () {
     $(document).on('click', '.addUser', function () {
         var usersOnline = $(".list_user>ul>li").length + 1;
 
-        var myLi = $('<li>', {}).appendTo('.list_user ul');
+        $('<li>', {}).appendTo('.list_user ul');
 
-        var myA = $('<a>', {
+        $('<a>', {
             class: 'user',
-            href: '#',
+            href: '#tab' + usersOnline,
             text: 'New user ' + usersOnline
         }).appendTo('.list_user li:last');
 
-        var myIcon = $('<i>', {
+        $('<i>', {
             class: 'close_user',
             text: ' [x]'
         }).appendTo('.list_user li a:last');

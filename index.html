@@ -6,11 +6,29 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chat</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 <body>
 <div class="container">
+    <!--<div class="login">-->
+        <!--<h3>Твое имя</h3>-->
+        <!--<input type="text" id="login">-->
+
+        <!--&lt;!&ndash;<section class="content bgcolor-1">&ndash;&gt;-->
+        <!--&lt;!&ndash;<h2>Nao</h2>&ndash;&gt;-->
+        <!--&lt;!&ndash;<span class="input input&#45;&#45;nao">&ndash;&gt;-->
+        <!--&lt;!&ndash;<input class="input__field input__field&#45;&#45;nao" type="text" id="input-1" />&ndash;&gt;-->
+        <!--&lt;!&ndash;<label class="input__label input__label&#45;&#45;nao" for="input-1">&ndash;&gt;-->
+        <!--&lt;!&ndash;<span class="input__label-content input__label-content&#45;&#45;nao">Username</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</label>&ndash;&gt;-->
+        <!--&lt;!&ndash;<svg class="graphic graphic&#45;&#45;nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">&ndash;&gt;-->
+        <!--&lt;!&ndash;<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;</svg>&ndash;&gt;-->
+        <!--&lt;!&ndash;</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</section>&ndash;&gt;-->
+    <!--</div>-->
     <!--   Шапка-->
     <div class="header">
         <div class="online_for">
@@ -19,20 +37,35 @@
         <div class="local_time">
             <p>Your local time is :</p>
         </div>
-        <a href="" class="edit_pers">Edit person info</a><br/>
-        <a href="" class="privat_mes"> Private massages (3)</a>
+
+        <a class="edit_pers" href="#openModal">Edit person info</a><br>
+
+        <div id="openModal" class="modalDialog">
+            <div>
+                <a href="#close" title="Закрыть" class="close">X</a>
+                <h2>Edit person info</h2>
+                <p>Современем Вы сможете отредактировать свой ник.</p>
+                <p>Так же сможете изменить картинку.</p>
+                <p>Будет ли тут пароль - еще неизвестно.</p>
+                <p>Что то еще.</p>
+
+            </div>
+        </div>
+
+        <a href="#" class="privat_mes"> Private massages (3)</a>
         <h4 class="head_h4">My chat name</h4>
     </div>
 
     <!-- Left bar -->
     <div class="left_bar">
+        <span class="__login">UserName</span>
         <p class="online">Online :</p> <i title="add User" class="addUser">+</i>
         <div class="list_user">
             <ul>
-                <li><a href="#" class="user">Jowh Brein</a></li>
-                <li><a href="#" class="user">Sasha Pull</a></li>
-                <li><a href="#" class="user">Jogn Snow</a></li>
-                <li><a href="#" class="user">Alison Black</a></li>
+                <li><a href="#tab1" class="user">Jowh Brein</a></li>
+                <li><a href="#tab2" class="user">Sasha Pull</a></li>
+                <li><a href="#tab3" class="user">Jogn Snow</a></li>
+                <li><a href="#tab4" class="user">Alison Black</a></li>
             </ul>
         </div>
     </div>
