@@ -60,5 +60,6 @@ if ( ! get_cookie ( "username" ) )
 else
 {
     var username = get_cookie ( "username" );
+    alert("Welcom " + username);
     $('.__login')[0].innerHTML = username;
 }
