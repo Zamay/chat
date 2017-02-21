@@ -103,9 +103,11 @@
                 </div>
             </div>
 
-            <div class="textarea">
-                <textarea name="" id="textarea" cols="30" rows="10" placeholder="Тут может быть ваш текст"></textarea>
-            </div>
+
+            <!--Работают кнопки bold ...  c div.editor, но не работаеют с textarea !-->
+            <!--<div class="editor" contenteditable></div>-->
+            <textarea name="" id="textarea" cols="30" rows="10" placeholder="Тут может быть ваш текст"></textarea>
+
 
             <!--footer-->
             <div class="info">
@@ -118,23 +120,23 @@
             </div>
 
             <!-- кнопки  -->
-            <div class="format">
-                <button type="button" class="btn form_active">B</button>
-                <button type="button" class="btn">I</button>
-                <button type="button" class="btn">U</button>
-                <button type="button" class="btn">Link</button>
+
+            <div class="toolbar">
+                <button type="button" class="btn" data-title="old" data-func="bold"><i class="fa fa-bold">B</i></button>
+                <button type="button" class="btn" data-title="talic" data-func="italic"><i class="fa fa-italic">I</i></button>
+                <button type="button" class="btn" data-title="nderline" data-func="underline"><i class="fa fa-underline">U</i></button>
+                <button type="button" class="btn" data-title="create" data-func="createLink"><i class="fa fa-underline">Link</i></button>
             </div>
 
             <!--Отправить-->
             <button type="button" class="button">Send</button>
 
-
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
-        <script src="js/cookie.js"></script>
-        <script src="js/time_user_.js"></script>
-        <script src="js/tabs.js"></script>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
+<script src="js/cookie.js"></script>
+<script src="js/time_user_.js"></script>
+<script src="js/tabs.js"></script>
 </body>
 </html>

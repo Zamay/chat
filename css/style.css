@@ -241,6 +241,17 @@ body {
 
 /* ---- end --- >*/
 
+.editor{
+    height: 96px;
+    width: 600px;
+    padding: 15px;
+    border: 1px solid;
+    border-radius: 3px;
+    resize: none;
+    background: #cfe2f3;
+}
+
+
 
 textarea {
     height: 96px;
@@ -262,12 +273,13 @@ textarea {
     list-style: none;
 }
 
-.format {
+.toolbar {
     float: left;
     padding-top: 15px;
     cursor: pointer;
     margin-left: 10%;
 }
+
 
 .btn {
     border: 0;
@@ -279,6 +291,11 @@ textarea {
 
 .form_active, .btn:hover, btn:focus {
     background: #cfe2f3;
+}
+
+.btn:hover:after{
+    content: attr(data-title);
+    font-style: italic;
 }
 
 .button {

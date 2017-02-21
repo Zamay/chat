@@ -81,6 +81,11 @@ window.onload = function () {
         $(this).toggleClass("form_active");
 
     });
+
+    $('.toolbar button[data-func]').click(function(){
+        document.execCommand( $(this).data('func'), false 	);
+    });
+
 };
 
 
