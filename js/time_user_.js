@@ -116,6 +116,76 @@ window.onload = function () {
 
     });
 
+    //Получение пользователей
+
+    var request1 = new XMLHttpRequest();
+    request1.open('GET', 'http://192.168.1.169:8081/user', true);
+
+    request1.onload = function() {
+        if (request1.status >= 200 && request1.status < 400) {
+            var response = request1.responseText;
+
+            JSON.parse(response).forEach(
+                function (obj, index) {
+
+                    if (obj.username != undefined){
+                        var ul = document.querySelector(".list_user");
+                        console.log(ul);
+                        ul.lastElementChild.innerHTML += `<li><a href = #${obj.user_id} class="user">${obj.username} </a></li>`;
+                    }
+                }
+            )
+        } else {
+            // Обработчик ответа в случае ошибки
+        }
+    };
+    request1.onerror = function() {
+        // Обработчик ответа в случае неудачного соеденения
+    };
+    request1.send();
+
+
+    // Получения сообщения
+
+    var request = new XMLHttpRequest();
+    request.open('GET', 'http://192.168.1.169:8081/messages', true);
+
+    request.onload = function() {
+        if (request.status >= 200 && request.status < 400) {
+            var response = request.responseText;
+
+
+            JSON.parse(response).forEach(
+                function (obj, index) {
+                    //console.log(obj);
+                    //if (obj.username == undefined){
+                    var cont = document.querySelector("#wrap-tab-content");
+                    var newDiv = document.createElement('div');
+                    // console.log(cont[index]);
+
+                    newDiv.innerHTML = `<div id="${obj.user_id}">
+                                <div class="tab-content">
+                                <p><b>${obj.user_id}:</b> ${obj.message}</p>
+                                </div></div>`;
+                    cont.appendChild(newDiv);
+
+                    // cont.innerHTML = `<div id="${obj.user_id}">
+                    //                      <div class="tab-content">
+                    //                      <p>Hello ${obj.user_id}</p></div></div>`;
+
+
+                    //}
+                }
+            )
+        } else {
+            // Обработчик ответа в случае ошибки
+        }
+    };
+    request.onerror = function() {
+        // Обработчик ответа в случае неудачного соеденения
+    };
+    request.send();
+
 };
 
 
