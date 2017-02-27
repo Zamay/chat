@@ -6,16 +6,29 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chat</title>
+    <link rel="stylesheet" href="css/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 <body>
 <div class="container">
-    <!--<div class="login">-->
-        <!--<h3>Твое имя</h3>-->
-        <!--<input type="text" id="login">-->
-    <!--</div>-->
+    <div class="body_login">
+        <div id="login">
+            <form action="javascript:void(0);" method="get">
+                <p>
+                    <span class="fontawesome-user">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </span>
+                    <input type="text"  maxlength="10" required autofocus placeholder="Login" name ="username">
+                </p>
+                <!--<input type="text" value="Логин"  maxlength="10" required autofocus onBlur="if(this.value == '') this.value = 'Логин'" onFocus="if(this.value == 'Логин') this.value = ''" required></p> &lt;!&ndash; JS because of IE support; better: placeholder="Username" &ndash;&gt;-->
+                <!--<p><span class="fontawesome-lock"></span><input type="password"  value="Пароль" onBlur="if(this.value == '') this.value = 'Пароль'" onFocus="if(this.value == 'Пароль') this.value = ''" required></p> &lt;!&ndash; JS because of IE support; better: placeholder="Password" &ndash;&gt;-->
+                <p><input type="submit" value="ВОЙТИ" name ="login"></p>
+            </form>
+        </div>
+    </div>
     <!--   Шапка-->
     <div class="header">
         <div class="online_for">
@@ -45,7 +58,7 @@
 
     <!-- Left bar -->
     <div class="left_bar">
-        <span class="__login">UserName</span>
+        <span class="__login"></span>
         <p class="online">Online :</p> <i title="add User" class="addUser">+</i>
         <div class="list_user">
             <ul>
@@ -122,10 +135,10 @@
             <!-- кнопки  -->
 
             <div class="toolbar">
-                <button type="button" class="btn" data-title="old" data-func="bold"><i class="fa fa-bold">B</i></button>
-                <button type="button" class="btn" data-title="talic" data-func="italic"><i class="fa fa-italic">I</i></button>
-                <button type="button" class="btn" data-title="nderline" data-func="underline"><i class="fa fa-underline">U</i></button>
-                <button type="button" class="btn" data-title="create" data-func="createLink"><i class="fa fa-underline">Link</i></button>
+                <button type="button" class="btn"  data-func="bold"><i class="fa fa-bold"></i></button>
+                <button type="button" class="btn"  data-func="italic"><i class="fa fa-italic"></i></button>
+                <button type="button" class="btn"  data-func="underline"><i class="fa fa-underline"></i></button>
+                <button type="button" class="btn"  data-func="createLink">Link</button>
             </div>
 
             <!--Отправить-->
@@ -135,7 +148,7 @@
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
-<script src="js/cookie.js"></script>
+<!--<script src="js/cookie.js"></script>-->
 <script src="js/time_user_.js"></script>
 <script src="js/tabs.js"></script>
 </body>

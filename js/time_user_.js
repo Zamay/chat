@@ -65,25 +65,55 @@ window.onload = function () {
             text: 'New user ' + usersOnline
         }).appendTo('.list_user li:last');
 
-        $('<i>', {
-            class: 'close_user',
-            text: ' [x]'
-        }).appendTo('.list_user li a:last');
+        // $('<i>', {
+        //     class: 'close_user',
+        //     text: ' [x]'
+        // }).appendTo('.list_user li a:last');
     });
 
     // delete User
-    $(document).on('click', '.close_user', function () {
-        $(this).parent().parent().remove();
-
-    });
+    // $(document).on('click', '.close_user', function () {
+    //     $(this).parent().parent().remove();
+    //
+    // });
 
     $(document).on('click', '.btn ', function () {
         $(this).toggleClass("form_active");
 
     });
 
-    $('.toolbar button[data-func]').click(function(){
-        document.execCommand( $(this).data('func'), false 	);
+    $('.toolbar button[data-func]').click(function () {
+        document.execCommand($(this).data('func'), false);
+    });
+
+    // login
+
+    $(document).on('click', "input:submit[name=login]", function () {
+        var username = document.querySelector("input[name=username]");
+        if (username.value != '') {
+            $.ajax({
+                url: "http://192.168.1.169:8081/user/register",
+                type: "POST",
+                data: JSON.stringify(
+                    {
+                        "username": username.value
+                    }
+                ),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $(".__login").html(data.username);
+                }
+            });
+
+            function delBlockUser() {
+                $(".body_login").remove();
+            }
+
+            setTimeout(delBlockUser, 1000);
+
+        }
+
     });
 
 };
