@@ -40,11 +40,12 @@ $(function () {
     //     return false;
     // }
 
-
     $(document).on('click', '.user', function () {
         if ($('.wrap-tab-content div').is(this.hash)) {
             $(".wrap-tab-content div").hide();
             $(this.hash).show();
+
+
 
             //....
             return false;
@@ -61,7 +62,7 @@ $(function () {
                 $(".tabs li a").removeClass("active");
 
                 $('<li>', {
-                    class: 'tab' + countTabs
+                    class: 'tab' + (countTabs-1)
                 }).appendTo('.tabs');
 
                 $('<a>', {
@@ -93,10 +94,122 @@ $(function () {
 
 
     $(document).on('click', '.ion-close-circled', function () {
-        $(this).parent().parent().remove();
+        $(this).closest("li").remove();
         var tabHref = $(this).parent().attr('href');
         $(tabHref).remove();
+
+        var last = $('.tabs li:last-child')[0];
+        var a = $(last).children()
+        a.addClass("active");
+
+
+
 
         return false;
     });
 });
+
+
+//login
+
+function logine() {
+    var username = document.querySelector("input[name=username]");
+
+    //переписать проверку ! а она нужна ?
+    if (username.value != '' & username.value != ' ' & username.value != '.' & username.value != '-' & username.value != '_' ) {
+        $.ajax({
+            url: "http://192.168.1.169:8081/user/register",
+            type: "POST",
+            data: JSON.stringify(
+                {
+                    "username": username.value
+                }
+            ),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $(".__login").html(data.username);
+            }
+        });
+
+        function delBlockUser() {
+            $(".body_login").remove();
+        }
+
+        setTimeout(delBlockUser, 1000);
+    }
+    return false;
+};
+
+//Получение пользователей
+var userAll = {};
+function users() {
+    $.ajax({
+        type: 'GET',
+        url: 'http://192.168.1.169:8081/user',
+        success: function (data) {  // Обработчик успешного ответа
+
+            $.parseJSON(JSON.stringify(data)).forEach(
+                function (obj) {
+                    if (obj.username != "" || obj.user_id != "") {
+                        var users = document.querySelector('.list_user');
+                        var userId = obj.user_id;
+
+                        if (!userAll[userId]) {
+                            userAll[userId] = true
+                            var ul = document.querySelector(".list_user");
+                            ul.lastElementChild.innerHTML += `<li><a href = #${obj.user_id} class="user">${obj.username} </a></li>`;
+
+                        }
+                    }
+                }
+            )
+
+
+        },
+        error: function (data, status) {  // Обработчик ответа в случае ошибки
+            console.error(data, status);
+        }
+    });
+}
+//  setInterval(users, 4000);
+
+
+// Получения сообщения
+
+var messagesAll = {};
+function messages() {
+    $.ajax({
+        type: 'GET',
+        url: 'http://192.168.1.169:8081/messages',
+        success: function (data) {  // Обработчик успещного ответа
+
+            $.parseJSON(JSON.stringify(data)).forEach(
+                function (obj) {
+                    if (obj.user_id != undefined) {
+                        var messages = document.querySelector('.wrap-tab-content');
+                        var userId = obj.user_id;
+                        var messag = messages.querySelector('#' + userId);
+
+                        if (messagesAll[userId]) {
+                            messagesAll[userId] = false;
+                            messages.querySelector('#' + userId).innerHTML += `<p><b>${obj.user_id}:</b> ${obj.message}</p>`;
+                        } else {
+                            messagesAll[userId] = true;
+                            var newDiv = document.createElement('div');
+                            newDiv.id = obj.user_id;
+                            newDiv.innerHTML = `<p><b>${obj.user_id}:</b> ${obj.message}</p>`;
+                            messages.appendChild(newDiv);
+                        }
+                    }
+                }
+            )
+
+        },
+        error: function (data, status) {  // Обработчик ответа в случае ошибки
+            console.error(data, status);
+        }
+    });
+}
+messages();
+// setInterval(messages, 4000);

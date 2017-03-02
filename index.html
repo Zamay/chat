@@ -16,15 +16,15 @@
 <div class="container">
     <!--<div class="body_login">-->
         <!--<div id="login">-->
-            <!--<form action="javascript:void(0);" method="get">-->
+            <!--<form action="javascript:void(0)" onsubmit="logine()" method="get">-->
                 <!--<p>-->
                     <!--<span class="fontawesome-user">-->
                         <!--<i class="fa fa-user" aria-hidden="true"></i>-->
                     <!--</span>-->
-                    <!--<input type="text"  maxlength="10" required autofocus placeholder="Login" name ="username">-->
+                    <!--&lt;!&ndash;<input type="text"  onKeyUp="if(/[^a-zA-Zа-яА-ЯёЁ]]/i.test(this.value)){this.value='';}" maxlength="15" required autofocus placeholder="Login" name ="username">&ndash;&gt;-->
+                    <!--<input type="text"  pattern="^[a-zA-Zа-яА-ЯёЁ][a-zA-Zа-яА-ЯёЁ0-9-_\.]{1,20}$" title="1)Первая всегда буква 2)Только буквы и цифры 3)Минимум 2 знака" required autofocus placeholder="Login" name ="username">-->
                 <!--</p>-->
-                <!--&lt;!&ndash;<input type="text" value="Логин"  maxlength="10" required autofocus onBlur="if(this.value == '') this.value = 'Логин'" onFocus="if(this.value == 'Логин') this.value = ''" required></p> &lt;!&ndash; JS because of IE support; better: placeholder="Username" &ndash;&gt;&ndash;&gt;-->
-                <!--&lt;!&ndash;<p><span class="fontawesome-lock"></span><input type="password"  value="Пароль" onBlur="if(this.value == '') this.value = 'Пароль'" onFocus="if(this.value == 'Пароль') this.value = ''" required></p> &lt;!&ndash; JS because of IE support; better: placeholder="Password" &ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;<p><span class="fontawesome-lock"></span><input type="password"  placeholder="Password"></p> &ndash;&gt;-->
                 <!--<p><input type="submit" value="ВОЙТИ" name ="login"></p>-->
             <!--</form>-->
         <!--</div>-->
@@ -59,7 +59,8 @@
     <!-- Left bar -->
     <div class="left_bar">
         <span class="__login"></span>
-        <p class="online">Online :</p> <i title="add User" class="addUser">+</i>
+        <p class="online">Online :</p>
+        <!--<i title="add User" class="addUser">+</i>-->
         <div class="list_user">
             <ul>
                 <li><a href="#tab1" class="user">Jowh Brein</a></li>
@@ -82,10 +83,10 @@
                         <a href="#main_menu">Mein menu</a>
                     </li>
                     <li class="tab1">
-                        <a href="#tab1">Jogn Snow <i class="ion-close-circled"></i></a>
+                        <a href="#tab1">Jowh Brein <i class="ion-close-circled"></i></a>
                     </li>
                     <li class="tab2">
-                        <a href="#tab2">Sasha Pull <i class="ion-close-circled"></i></a>
+                        <a href="#tab2">Jogn Snow <i class="ion-close-circled"></i></a>
                     </li>
                     <li class="tab3">
                         <a href="#tab3">Alison Black <i class="ion-close-circled"></i></a>
@@ -96,7 +97,7 @@
 
             <!-- Контент -->
             <div class="main_cont">
-                <div id="wrap-tab-content">
+                <div class="wrap-tab-content">
                     <div id="main_menu">
                         <p><b>Jogn Snow:</b> Hi!</p>
                         <p><b>Sasha Pull:</b> hello))</p>
@@ -104,13 +105,13 @@
                         <p><b>Alison Black: </b> привет</p>
                     </div>
                     <div id="tab1">
-                        <p><b>Jogn Snow:</b> Hi!</p>
+                        <p><b>Jowh Brein:</b> Hi!</p>
                     </div>
                     <div id="tab2">
                         <p><b>Sasha Pull:</b> hello))</p>
                     </div>
                     <div id="tab3">
-                        <p><b>Alison Black: </b> привет</p>
+                        <p><b>Jogn Snow: </b> привет</p>
                     </div>
 
                 </div>
@@ -118,8 +119,8 @@
 
 
             <!--Работают кнопки bold ...  c div.editor, но не работаеют с textarea !-->
-            <!--<div class="editor" contenteditable></div>-->
-            <textarea name="" id="textarea" cols="30" rows="10" placeholder="Тут может быть ваш текст"></textarea>
+            <div class="editor" id="editor" onmousedown="text_button()" contenteditable></div>
+            <!--<textarea name="" id="textarea" cols="30" rows="10" placeholder="Тут может быть ваш текст"></textarea>-->
 
 
             <!--footer-->
