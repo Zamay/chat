@@ -5,9 +5,11 @@
     padding: 0;
     outline: none;
 }
-a{
+
+a {
     color: #000;
 }
+
 a:active {
     color: #000; /* Цвет активной ссылки */
 }
@@ -60,10 +62,11 @@ body {
 
 /* end header*/
 
-.__login{
+.__login {
     float: left;
     margin: 14px 0 0 14px;
 }
+
 /* left_bar */
 .left_bar {
     width: 28%;
@@ -140,6 +143,7 @@ body {
     margin-bottom: 15px;
     background: #cfe2f3;
     position: relative;
+    overflow-x: auto;
 }
 
 .wrap-tabs {
@@ -148,6 +152,7 @@ body {
 
 .main_menu {
     margin-left: 14px;
+
 }
 
 .tabs {
@@ -216,7 +221,7 @@ body {
 
 /* ---- end --- >*/
 
-.editor{
+.editor {
     height: 96px;
     width: 600px;
     padding: 15px;
@@ -226,8 +231,6 @@ body {
     background: #cfe2f3;
 
 }
-
-
 
 textarea {
     height: 96px;
@@ -256,7 +259,6 @@ textarea {
     margin-left: 10%;
 }
 
-
 .btn {
     border: 0;
     border-radius: 3px;
@@ -269,7 +271,7 @@ textarea {
     background: #cfe2f3;
 }
 
-.btn:hover:after{
+.btn:hover:after {
     content: attr(data-title);
     font-style: italic;
 }

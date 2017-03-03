@@ -1,6 +1,8 @@
 /**
  * Created by zamaj on 03.02.2017.
  */
+var urls = 'http://192.168.1.169:8081';
+
 $(function () {
 
     $(".wrap-tab-content div").hide();
@@ -11,40 +13,10 @@ $(function () {
         $(".wrap-tab-content #main_menu").show();
     }
 
-
-    // var countTabs;
-    // function createTab() {
-    //     countTabs = parseInt($(".tabs li a").length)+1;
-    //
-    //     $(".wrap-tab-content div").hide();
-    //     $(".tabs li a").removeClass("active");
-    //
-    //     var myLi = $('<li>', {
-    //         class: 'tab' + countTabs
-    //     }).appendTo('.tabs');
-    //
-    //     var myA = $('<a>', {
-    //         href: '#' + countTabs,
-    //         text: 'New tab '
-    //     }).appendTo('.tabs li:last').addClass("active");
-    //
-    //     var myIcon = $('<i>', {
-    //         class: 'ion-close-circled'
-    //     }).appendTo('.tabs li a:last');
-    //
-    //     var myDiv = $('<div>', {
-    //         'id': countTabs,
-    //         text: countTabs + ' lorem ipsum'
-    //     }).appendTo('.wrap-tab-content');
-    //
-    //     return false;
-    // }
-
     $(document).on('click', '.user', function () {
         if ($('.wrap-tab-content div').is(this.hash)) {
             $(".wrap-tab-content div").hide();
             $(this.hash).show();
-
 
 
             //....
@@ -62,7 +34,7 @@ $(function () {
                 $(".tabs li a").removeClass("active");
 
                 $('<li>', {
-                    class: 'tab' + (countTabs-1)
+                    class: 'tab' + (countTabs - 1)
                 }).appendTo('.tabs');
 
                 $('<a>', {
@@ -103,47 +75,41 @@ $(function () {
         a.addClass("active");
 
 
-
-
         return false;
     });
 });
 
 
 //login
-
+var username = document.querySelector("input[name=username]");
 function logine() {
-    var username = document.querySelector("input[name=username]");
-
-    //переписать проверку ! а она нужна ?
-    if (username.value != '' & username.value != ' ' & username.value != '.' & username.value != '-' & username.value != '_' ) {
-        $.ajax({
-            url: "http://192.168.1.169:8081/user/register",
-            type: "POST",
-            data: JSON.stringify(
-                {
-                    "username": username.value
-                }
-            ),
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                $(".__login").html(data.username);
-            },
-            error: function (data, status) {
-                $(".__login").html(username.value);
-
-                console.log(data, status);
+    $.ajax({
+        url: urls + '/user/register',
+        type: "POST",
+        data: JSON.stringify(
+            {
+                "username": username.value
             }
+        ),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            $(".__login").html(data.username);
+        },
+        error: function (data, status) {
+            // $(".__login").html(username.value);
 
-        });
-
-        function delBlockUser() {
-            $(".body_login").remove();
+            console.log(data, status);
         }
 
-        setTimeout(delBlockUser, 1000);
+    });
+
+    function delBlockUser() {
+        $(".body_login").remove();
     }
+
+    setTimeout(delBlockUser, 1000);
+
     return false;
 };
 
@@ -152,7 +118,7 @@ var userAll = {};
 function users() {
     $.ajax({
         type: 'GET',
-        url: 'http://192.168.1.169:8081/user',
+        url: urls + '/user',
         success: function (data) {  // Обработчик успешного ответа
 
             $.parseJSON(JSON.stringify(data)).forEach(
@@ -160,9 +126,8 @@ function users() {
                     if (obj.username != "" || obj.user_id != "") {
                         var users = document.querySelector('.list_user');
                         var userId = obj.user_id;
-
                         if (!userAll[userId]) {
-                            userAll[userId] = true
+                            userAll[userId] = true;
                             var ul = document.querySelector(".list_user");
                             ul.lastElementChild.innerHTML += `<li><a href = #${obj.user_id} class="user">${obj.username} </a></li>`;
 
@@ -178,8 +143,7 @@ function users() {
         }
     });
 }
-setInterval(users, 4000);
-
+setInterval(users, 3000);
 
 // Получения сообщения
 
@@ -187,26 +151,18 @@ var messagesAll = {};
 function messages() {
     $.ajax({
         type: 'GET',
-        url: 'http://192.168.1.169:8081/messages',
+        url: urls + '/messages',
         success: function (data) {  // Обработчик успещного ответа
 
             $.parseJSON(JSON.stringify(data)).forEach(
                 function (obj) {
-                    if (obj.user_id != undefined) {
-                        var messages = document.querySelector('.wrap-tab-content');
-                        var userId = obj.user_id;
-                        var messag = messages.querySelector('#' + userId);
+                    if (obj.user_id != '') {
 
-                        if (messagesAll[userId]) {
-                            messagesAll[userId] = false;
-                            messages.querySelector('#' + userId).innerHTML += `<p><b>${obj.user_id}:</b> ${obj.message}</p>`;
-                        } else {
-                            messagesAll[userId] = true;
-                            var newDiv = document.createElement('div');
-                            newDiv.id = obj.user_id;
-                            newDiv.innerHTML = `<p><b>${obj.user_id}:</b> ${obj.message}</p>`;
-                            messages.appendChild(newDiv);
-                        }
+                        var userId = obj.user_id;
+                        if (!messagesAll[userId]) {
+                            userAll[userId] = true;
+                            resMess(obj);
+                         }
                     }
                 }
             )
@@ -217,5 +173,49 @@ function messages() {
         }
     });
 }
-messages();
-// setInterval(messages, 4000);
+ //messages();
+//setTimeout(messages, 4000);
+//setInterval(messages, 3000);
+
+// отправка сообщений
+var text_message = $('#editor').html();
+
+function message() {
+    $.ajax({
+        url: urls + '/messages',
+        type: "POST",
+        data: JSON.stringify(
+            {
+                "user_id": username.value,
+                "message": $('#editor').html(),
+                "datetime": new Date()
+            }
+        ),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+
+            resMess(data);
+
+            $('#editor').html('');
+
+            console.log(data);
+        },
+        error: function (data, status) {
+            console.log(data, status);
+        }
+
+
+    });
+}
+
+function resMess(data) {
+    var messages = document.querySelector('.wrap-tab-content');
+    var newDiv = document.createElement('div');
+    var dateStr = data.datetime;
+    var date = dateStr.split('T')[0];
+    var time = dateStr.split('T')[1].replace(/.{5}$/, '');
+    newDiv.id = data.user_id;
+    newDiv.innerHTML = `<p><b>${data.user_id}:</b> ${data.message} <span style="float: right">` + time + `</span></p>`;
+    messages.appendChild(newDiv);
+}

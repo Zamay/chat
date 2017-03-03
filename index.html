@@ -22,10 +22,12 @@
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </span>
                     <!--<input type="text"  onKeyUp="if(/[^a-zA-Zа-яА-ЯёЁ]]/i.test(this.value)){this.value='';}" maxlength="15" required autofocus placeholder="Login" name ="username">-->
-                    <input type="text"  pattern="^[a-zA-Zа-яА-ЯёЁ][a-zA-Zа-яА-ЯёЁ0-9-_\.]{1,20}$" title="1)Первая всегда буква 2)Только буквы и цифры 3)Минимум 2 знака" required autofocus placeholder="Login" name ="username">
+                    <input type="text" pattern="^[a-zA-Zа-яА-ЯёЁ][a-zA-Zа-яА-ЯёЁ0-9-_\.]{1,20}$"
+                           title="1)Первая всегда буква 2)Только буквы и цифры 3)Минимум 2 знака" required autofocus
+                           placeholder="Login" name="username">
                 </p>
                 <!--<p><span class="fontawesome-lock"></span><input type="password"  placeholder="Password"></p> -->
-                <p><input type="submit" value="ВОЙТИ" name ="login"></p>
+                <p><input type="submit" value="ВОЙТИ" name="login"></p>
             </form>
         </div>
     </div>
@@ -52,7 +54,7 @@
             </div>
         </div>
 
-        <a href="#" class="privat_mes"> Private massages (3)</a>
+        <p class="privat_mes"> Private massages (3)</p>
         <h4 class="head_h4">My chat name</h4>
     </div>
 
@@ -63,10 +65,10 @@
         <!--<i title="add User" class="addUser">+</i>-->
         <div class="list_user">
             <ul>
-                <li><a href="#tab1" class="user">Jowh Brein</a></li>
-                <li><a href="#tab2" class="user">Sasha Pull</a></li>
-                <li><a href="#tab3" class="user">Jogn Snow</a></li>
-                <li><a href="#tab4" class="user">Alison Black</a></li>
+                <!--<li><a href="#tab1" class="user">Jowh Brein</a><span class="status on"> online</span></li>-->
+                <!--<li><a href="#tab2" class="user">Sasha Pull</a><span class="status on"> online</span></li>-->
+                <!--<li><a href="#tab3" class="user">Jogn Snow</a><span class="status off"> offline</span></li>-->
+                <!--<li><a href="#tab4" class="user">Alison Black</a><span class="status off"> offline</span></li>-->
             </ul>
         </div>
     </div>
@@ -82,15 +84,15 @@
                     <li class="main_menu">
                         <a href="#main_menu">Mein menu</a>
                     </li>
-                    <li class="tab1">
-                        <a href="#tab1">Jowh Brein <i class="ion-close-circled"></i></a>
-                    </li>
-                    <li class="tab2">
-                        <a href="#tab2">Jogn Snow <i class="ion-close-circled"></i></a>
-                    </li>
-                    <li class="tab3">
-                        <a href="#tab3">Alison Black <i class="ion-close-circled"></i></a>
-                    </li>
+                    <!--<li class="tab1">-->
+                        <!--<a href="#tab1">Jowh Brein <i class="ion-close-circled"></i></a>-->
+                    <!--</li>-->
+                    <!--<li class="tab2">-->
+                        <!--<a href="#tab2">Jogn Snow <i class="ion-close-circled"></i></a>-->
+                    <!--</li>-->
+                    <!--<li class="tab3">-->
+                        <!--<a href="#tab3">Alison Black <i class="ion-close-circled"></i></a>-->
+                    <!--</li>-->
 
                 </ul>
             </div>
@@ -99,20 +101,20 @@
             <div class="main_cont">
                 <div class="wrap-tab-content">
                     <div id="main_menu">
-                        <p><b>Jogn Snow:</b> Hi!</p>
-                        <p><b>Sasha Pull:</b> hello))</p>
-                        <p><b>Jogn Snow: </b> ky</p>
-                        <p><b>Alison Black: </b> привет</p>
+                        <!--<p><b>Jogn Snow:</b> Hi!</p>-->
+                        <!--<p><b>Sasha Pull:</b> hello))</p>-->
+                        <!--<p><b>Jogn Snow: </b> ky</p>-->
+                        <!--<p><b>Alison Black: </b> привет</p>-->
                     </div>
-                    <div id="tab1">
-                        <p><b>Jowh Brein:</b> Hi!</p>
-                    </div>
-                    <div id="tab2">
-                        <p><b>Sasha Pull:</b> hello))</p>
-                    </div>
-                    <div id="tab3">
-                        <p><b>Jogn Snow: </b> привет</p>
-                    </div>
+                    <!--<div id="tab1">-->
+                        <!--<p><b>Jowh Brein:</b> Hi!</p>-->
+                    <!--</div>-->
+                    <!--<div id="tab2">-->
+                        <!--<p><b>Sasha Pull:</b> hello))</p>-->
+                    <!--</div>-->
+                    <!--<div id="tab3">-->
+                        <!--<p><b>Jogn Snow: </b> привет</p>-->
+                    <!--</div>-->
 
                 </div>
             </div>
@@ -136,14 +138,14 @@
             <!-- кнопки  -->
 
             <div class="toolbar">
-                <button type="button" class="btn"  data-func="bold"><i class="fa fa-bold"></i></button>
-                <button type="button" class="btn"  data-func="italic"><i class="fa fa-italic"></i></button>
-                <button type="button" class="btn"  data-func="underline"><i class="fa fa-underline"></i></button>
-                <button type="button" class="btn"  data-func="createLink">Link</button>
+                <button type="button" class="btn" data-func="bold"><i class="fa fa-bold"></i></button>
+                <button type="button" class="btn" data-func="italic"><i class="fa fa-italic"></i></button>
+                <button type="button" class="btn" data-func="underline"><i class="fa fa-underline"></i></button>
+                <button type="button" class="btn" data-func="createLink">Link</button>
             </div>
 
             <!--Отправить-->
-            <button type="button" class="button">Send</button>
+            <button type="button" class="button" onclick="message()">Send</button>
 
         </div>
     </div>

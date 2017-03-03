@@ -69,7 +69,6 @@ function text_button() {
 };
 
 
-
 // // add User для проверки .
 //
 // $(document).on('click', '.addUser', function () {
