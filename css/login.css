@@ -1,5 +1,5 @@
 .body_login{
-    position: absolute;
+    position: fixed;
     z-index: 9999;
     background: #2c3338;
     top: 0;

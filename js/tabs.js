@@ -129,7 +129,13 @@ function logine() {
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 $(".__login").html(data.username);
+            },
+            error: function (data, status) {
+                $(".__login").html(username.value);
+
+                console.log(data, status);
             }
+
         });
 
         function delBlockUser() {
@@ -172,7 +178,7 @@ function users() {
         }
     });
 }
-//  setInterval(users, 4000);
+setInterval(users, 4000);
 
 
 // Получения сообщения
