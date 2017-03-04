@@ -155,6 +155,10 @@ body {
 
 }
 
+.main_menu > div > p {
+    clear: both;
+}
+
 .tabs {
     margin: 0;
     padding-left: 10px;

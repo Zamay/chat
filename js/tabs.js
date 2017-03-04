@@ -1,7 +1,8 @@
 /**
  * Created by zamaj on 03.02.2017.
  */
-var urls = 'http://192.168.1.169:8081';
+var urls = 'https://main-workspace-juggerr.c9users.io:8081';
+
 
 $(function () {
 
@@ -94,6 +95,7 @@ function logine() {
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
+            console.log("login" + data);
             $(".__login").html(data.username);
         },
         error: function (data, status) {
@@ -121,8 +123,9 @@ function users() {
         url: urls + '/user',
         success: function (data) {  // Обработчик успешного ответа
 
-            $.parseJSON(JSON.stringify(data)).forEach(
+            data.forEach(
                 function (obj) {
+                    console.log("user" + obj);
                     if (obj.username != "" || obj.user_id != "") {
                         var users = document.querySelector('.list_user');
                         var userId = obj.user_id;
@@ -154,8 +157,9 @@ function messages() {
         url: urls + '/messages',
         success: function (data) {  // Обработчик успещного ответа
 
-            $.parseJSON(JSON.stringify(data)).forEach(
+            data.forEach(
                 function (obj) {
+                    console.log("message" + obj);
                     if (obj.user_id != '') {
 
                         var userId = obj.user_id;
@@ -173,12 +177,12 @@ function messages() {
         }
     });
 }
- //messages();
+//messages();
 //setTimeout(messages, 4000);
-//setInterval(messages, 3000);
+setInterval(messages, 3000);
 
 // отправка сообщений
-var text_message = $('#editor').html();
+//var text_message = $('#editor').html(); //откуда брать текст - ....
 
 function message() {
     $.ajax({
