@@ -104,7 +104,6 @@ function logine() {
                 alert("ttrue");
                 $(".__login").html(data.username);
             }
-
             console.log(data, status);
         }
 
@@ -144,8 +143,6 @@ function users() {
                     }
                 }
             )
-
-
         },
         error: function (data, status) {  // Обработчик ответа в случае ошибки
             console.error(data, status);
@@ -167,15 +164,9 @@ function messages() {
             data.forEach(
                 function (obj) {
                     messagesData = obj.user_id;
-
-                        var userId = obj.user_id;
-                        if (!messagesAll[userId]) {
-                            userAll[userId] = true;
                     resMess(obj);
-
                 }
             )
-
         },
         error: function (data, status) {  // Обработчик ответа в случае ошибки
             console.error(data, status);
