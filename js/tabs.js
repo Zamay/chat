@@ -82,6 +82,7 @@ $(function () {
 
 
 //login
+var userId;
 var username = document.querySelector("input[name=username]");
 function logine() {
     $.ajax({
@@ -95,11 +96,14 @@ function logine() {
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            console.log("login" + data);
             $(".__login").html(data.username);
+            userId = data.id;
         },
         error: function (data, status) {
-            // $(".__login").html(username.value);
+            if (data.username == username.value) {
+                alert("ttrue");
+                $(".__login").html(data.username);
+            }
 
             console.log(data, status);
         }
@@ -116,6 +120,7 @@ function logine() {
 };
 
 //Получение пользователей
+var usersData;
 var userAll = {};
 function users() {
     $.ajax({
@@ -125,6 +130,7 @@ function users() {
 
             data.forEach(
                 function (obj) {
+                    usersData = data;
                     console.log("user" + obj);
                     if (obj.username != "" || obj.user_id != "") {
                         var users = document.querySelector('.list_user');
@@ -146,11 +152,12 @@ function users() {
         }
     });
 }
-setInterval(users, 3000);
+users();
+setInterval(users, 10000);
 
 // Получения сообщения
-
-var messagesAll = {};
+var messagesData;
+//var messagesAll = {};
 function messages() {
     $.ajax({
         type: 'GET',
@@ -159,15 +166,13 @@ function messages() {
 
             data.forEach(
                 function (obj) {
-                    console.log("message" + obj);
-                    if (obj.user_id != '') {
+                    messagesData = obj.user_id;
 
                         var userId = obj.user_id;
                         if (!messagesAll[userId]) {
                             userAll[userId] = true;
-                            resMess(obj);
-                         }
-                    }
+                    resMess(obj);
+
                 }
             )
 
@@ -177,9 +182,9 @@ function messages() {
         }
     });
 }
-//messages();
+messages();
 //setTimeout(messages, 4000);
-setInterval(messages, 3000);
+//setInterval(messages, 3000);
 
 // отправка сообщений
 //var text_message = $('#editor').html(); //откуда брать текст - ....
@@ -214,12 +219,29 @@ function message() {
 }
 
 function resMess(data) {
+    var userName = resUserMes(usersData, messagesData);
     var messages = document.querySelector('.wrap-tab-content');
     var newDiv = document.createElement('div');
     var dateStr = data.datetime;
-    var date = dateStr.split('T')[0];
-    var time = dateStr.split('T')[1].replace(/.{5}$/, '');
+
+    var time = moment(dateStr).format('H:mm:ss');
+//  var dateMes = moment(dateStr).format('DD.MM.YYYY');
     newDiv.id = data.user_id;
-    newDiv.innerHTML = `<p><b>${data.user_id}:</b> ${data.message} <span style="float: right">` + time + `</span></p>`;
+    newDiv.innerHTML = `<p><b>${userName}:</b> ${data.message} <span style="float: right">${time}</span></p>`;
     messages.appendChild(newDiv);
 }
+
+
+function resUserMes(users, mesUserId) {
+
+    var userName;
+    var mesId = mesUserId;
+
+    users.forEach(
+        function (user) {
+            if (user.user_id == mesId) userName = user.username;
+        }
+    )
+    return userName;
+}
+
