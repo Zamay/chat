@@ -1,7 +1,8 @@
 /**
  * Created by zamaj on 03.02.2017.
  */
-var urls = 'https://main-workspace-juggerr.c9users.io:8081';
+// var urls = 'https://main-workspace-juggerr.c9users.io:8081';
+var urls = 'http://79c09720.ngrok.io';
 
 
 $(function () {
@@ -221,6 +222,7 @@ function resMess(data) {
     newDiv.innerHTML = `<p><b>${userName}:</b> ${data.message} <span style="float: right">${time}</span></p>`;
     messages.appendChild(newDiv);
 }
+<<<<<<< HEAD
 
 
 function resUserMes(users, mesUserId) {
@@ -236,3 +238,5 @@ function resUserMes(users, mesUserId) {
     return userName;
 }
 
+=======
+>>>>>>> origin/master
