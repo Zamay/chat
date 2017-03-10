@@ -82,7 +82,7 @@ $(function () {
 
 
 //login
-var userId;
+var userIdNow;
 var username = document.querySelector("input[name=username]");
 function logine() {
     $.ajax({
@@ -97,7 +97,7 @@ function logine() {
         contentType: "application/json; charset=utf-8",
         success: function (data) {
             $(".__login").html(data.username);
-            userId = data.id;
+            userIdNow = data.id;
         },
         error: function (data, status) {
             if (data.username == username.value) {
@@ -130,7 +130,7 @@ function users() {
             data.forEach(
                 function (obj) {
                     usersData = data;
-                    console.log("user" + obj);
+                    // console.log("user" + obj);
                     if (obj.username != "" || obj.user_id != "") {
                         var users = document.querySelector('.list_user');
                         var userId = obj.user_id;
@@ -152,30 +152,40 @@ function users() {
 users();
 setInterval(users, 10000);
 
-// Получения сообщения
+
 var messagesData;
-//var messagesAll = {};
+var mesAll = {};
 function messages() {
     $.ajax({
         type: 'GET',
         url: urls + '/messages',
-        success: function (data) {  // Обработчик успещного ответа
-
+        success: function (data) {
             data.forEach(
                 function (obj) {
                     messagesData = obj.user_id;
-                    resMess(obj);
+                    var key = obj.user_id + "/"+ obj.datetime;
+                    if (!mesAll[key]) {
+                        mesAll[key] = obj;
+                        var userName = resUserMes(usersData, messagesData);
+                        var messages = document.querySelector('.wrap-tab-content');
+                        var newDiv = document.createElement('div');
+                            newDiv.id = obj.user_id;
+                        var dateStr = obj.datetime;
+                        var time = moment(dateStr).format('H:mm:ss');
+                        //  var dateMes = moment(dateStr).format('DD.MM.YYYY');
+                        newDiv.innerHTML = `<p><b>${userName}:</b> ${obj.message} <span style="float: right">${time}</span></p>`;
+                        messages.appendChild(newDiv);
+                    }
                 }
             )
         },
-        error: function (data, status) {  // Обработчик ответа в случае ошибки
+        error: function (data, status) {
             console.error(data, status);
         }
     });
 }
 messages();
-//setTimeout(messages, 4000);
-//setInterval(messages, 3000);
+setInterval(messages, 3000);
 
 // отправка сообщений
 //var text_message = $('#editor').html(); //откуда брать текст - ....
@@ -186,7 +196,7 @@ function message() {
         type: "POST",
         data: JSON.stringify(
             {
-                "user_id": username.value,
+                "user_id": String(userIdNow),
                 "message": $('#editor').html(),
                 "datetime": new Date()
             }
@@ -194,34 +204,27 @@ function message() {
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-
-            resMess(data);
-
+            //resMess(data);
             $('#editor').html('');
-
             console.log(data);
         },
         error: function (data, status) {
             console.log(data, status);
         }
-
-
     });
 }
 
-function resMess(data) {
-    var userName = resUserMes(usersData, messagesData);
-    var messages = document.querySelector('.wrap-tab-content');
-    var newDiv = document.createElement('div');
-    var dateStr = data.datetime;
-
-    var time = moment(dateStr).format('H:mm:ss');
-//  var dateMes = moment(dateStr).format('DD.MM.YYYY');
-    newDiv.id = data.user_id;
-    newDiv.innerHTML = `<p><b>${userName}:</b> ${data.message} <span style="float: right">${time}</span></p>`;
-    messages.appendChild(newDiv);
-}
-
+// function resMess(data) {
+//     var userName = resUserMes(usersData, messagesData);
+//     var messages = document.querySelector('.wrap-tab-content');
+//     var newDiv = document.createElement('div');
+//     var dateStr = data.datetime;
+//     var time = moment(dateStr).format('H:mm:ss');
+// //  var dateMes = moment(dateStr).format('DD.MM.YYYY');
+//     newDiv.id = data.user_id;
+//     newDiv.innerHTML = `<p><b>${userName}:</b> ${data.message} <span style="float: right">${time}</span></p>`;
+//     messages.appendChild(newDiv);
+// }
 
 function resUserMes(users, mesUserId) {
 
