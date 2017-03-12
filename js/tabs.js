@@ -1,7 +1,7 @@
 /**
  * Created by zamaj on 03.02.2017.
  */
-var urls = 'https://main-workspace-juggerr.c9users.io:8081';
+var urls = 'http://192.168.1.169:8081';
 
 
 $(function () {
