@@ -82,8 +82,8 @@ $(function () {
 
 
 //login
-var userIdNow;
-var username = document.querySelector("input[name=username]");
+let userIdNow;
+const username = document.querySelector("input[name=username]");
 function logine() {
     $.ajax({
         url: urls + '/user/register',
@@ -100,21 +100,14 @@ function logine() {
             userIdNow = data.id;
         },
         error: function (data, status) {
-            if (data.username == username.value) {
-                alert("ttrue");
-                $(".__login").html(data.username);
-            }
             console.log(data, status);
         }
-
     });
-
     function delBlockUser() {
         $(".body_login").remove();
     }
 
     setTimeout(delBlockUser, 1000);
-
     return false;
 };
 
@@ -125,20 +118,18 @@ function users() {
     $.ajax({
         type: 'GET',
         url: urls + '/user',
-        success: function (data) {  // Обработчик успешного ответа
-
+        success: function (data) {
             data.forEach(
                 function (obj) {
                     usersData = data;
-                    // console.log("user" + obj);
+                    console.log("user" + obj);
                     if (obj.username != "" || obj.user_id != "") {
-                        var users = document.querySelector('.list_user');
                         var userId = obj.user_id;
                         if (!userAll[userId]) {
                             userAll[userId] = true;
                             var ul = document.querySelector(".list_user");
-                            ul.lastElementChild.innerHTML += `<li><a href = #${obj.user_id} class="user">${obj.username} </a></li>`;
-
+                            ul.lastElementChild.innerHTML += `<li id="${obj.user_id}">
+                                                              <a href = #${obj.user_id} class="user">${obj.username} </a></li>`;
                         }
                     }
                 }
@@ -148,10 +139,10 @@ function users() {
             console.error(data, status);
         }
     });
+
 }
 users();
 setInterval(users, 10000);
-
 
 var messagesData;
 var mesAll = {};
@@ -163,18 +154,10 @@ function messages() {
             data.forEach(
                 function (obj) {
                     messagesData = obj.user_id;
-                    var key = obj.user_id + "/"+ obj.datetime;
+                    var key = obj.user_id + "/" + obj.datetime;
                     if (!mesAll[key]) {
                         mesAll[key] = obj;
-                        var userName = resUserMes(usersData, messagesData);
-                        var messages = document.querySelector('.wrap-tab-content');
-                        var newDiv = document.createElement('div');
-                            newDiv.id = obj.user_id;
-                        var dateStr = obj.datetime;
-                        var time = moment(dateStr).format('H:mm:ss');
-                        //  var dateMes = moment(dateStr).format('DD.MM.YYYY');
-                        newDiv.innerHTML = `<p><b>${userName}:</b> ${obj.message} <span style="float: right">${time}</span></p>`;
-                        messages.appendChild(newDiv);
+                        respMess(obj);
                     }
                 }
             )
@@ -184,13 +167,11 @@ function messages() {
         }
     });
 }
-messages();
+messages()
 setInterval(messages, 3000);
 
 // отправка сообщений
-//var text_message = $('#editor').html(); //откуда брать текст - ....
-
-function message() {
+$('button[name="sendMess"]').click(function(){
     $.ajax({
         url: urls + '/messages',
         type: "POST",
@@ -204,7 +185,6 @@ function message() {
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            //resMess(data);
             $('#editor').html('');
             console.log(data);
         },
@@ -212,30 +192,127 @@ function message() {
             console.log(data, status);
         }
     });
+})
+
+function respMess(data) {
+    let userName = resUserMes(usersData, messagesData);
+    let messages = document.querySelector('#main_menu');
+
+    let dateStr = data.datetime;
+    let time = moment(dateStr).format('H:mm:ss');
+    let dateMes = moment(dateStr).format('DD.MM.YYYY');
+
+    let dateMess  = moment(dateStr).calendar(null, {
+        sameDay: '[Today]',
+        nextDay: '[Tomorrow]',
+        lastDay: '[Yesterday]',
+        sameElse: 'MMMM Do'
+    })
+
+    console.log($('.day_container').data('date') == `${dateMes}`)
+    if ($('.day_container').data('date') == `${dateMes}`) {
+        $(`<p><b>${userName}:</b> ${data.message} <span style="float: right">${time}</span></p>`).appendTo($('.day_msgs'));
+    } else {
+        $(`
+            <div class="day_container" data-date="${dateMes}">
+              <div class="day_divider" >
+                  <span>${dateMess}</span>
+              </div>
+              <div class="day_msgs">
+                <p><b>${userName}:</b> ${data.message} <span style="float: right">${time}</span></p>
+              </div>
+            </div>`).appendTo(messages);
+    }
+    $(".main_cont").scrollTop(2000);
 }
 
-// function resMess(data) {
-//     var userName = resUserMes(usersData, messagesData);
-//     var messages = document.querySelector('.wrap-tab-content');
-//     var newDiv = document.createElement('div');
-//     var dateStr = data.datetime;
-//     var time = moment(dateStr).format('H:mm:ss');
-// //  var dateMes = moment(dateStr).format('DD.MM.YYYY');
-//     newDiv.id = data.user_id;
-//     newDiv.innerHTML = `<p><b>${userName}:</b> ${data.message} <span style="float: right">${time}</span></p>`;
-//     messages.appendChild(newDiv);
-// }
 
 function resUserMes(users, mesUserId) {
 
     var userName;
     var mesId = mesUserId;
 
-    users.forEach(
-        function (user) {
+    users.forEach(function (user) {
             if (user.user_id == mesId) userName = user.username;
         }
     )
+
     return userName;
 }
 
+
+$(function () {
+
+    $(".wrap-tab-content div").hide();
+    $(".tabs li a").removeClass("active");
+    $(".main_menu a").addClass("active");
+
+    if ($(".main_menu a").hasClass("active")) {
+        $(".wrap-tab-content #main_menu").show();
+    }
+
+    $(document).on('click', '.user', function () {
+        if ($('.wrap-tab-content div').is(this.hash)) {
+            $(".wrap-tab-content div").hide();
+            $(this.hash).show();
+
+
+            //....
+            return false;
+        } else {
+
+            if ($(".tabs li a").length >= 7) {
+                alert('Close tabs! Limit 7');
+            }
+            else {
+                //createTab();
+                countTabs = parseInt($(".tabs li a").length) + 1;
+
+                $(".wrap-tab-content div").hide();
+                $(".tabs li a").removeClass("active");
+
+                $('<li>', {
+                    class: 'tab'
+                }).appendTo('.tabs');
+
+                $('<a>', {
+                    href: this.hash.replace('', ''),
+                    text: 'UserMane'// Значение нажатой вкладки слева --- this
+                }).appendTo('.tabs li:last').addClass("active");
+
+                $('<i>', {
+                    class: 'ion-close-circled'
+                }).appendTo('.tabs li a:last');
+
+                $('<div>', {
+                    id: this.hash.replace('#', '')
+                }).text('New div id: ' + this.hash).appendTo('.wrap-tab-content');
+            }
+            return false;
+        }
+    });
+
+
+    $(document).on('click', '.tabs li a', function () {
+        $(".wrap-tab-content").children().hide();
+        $(this.hash).show();
+        $(".tabs li a").removeClass("active");
+        $(this).addClass("active");
+
+        return false;
+    });
+
+
+    $(document).on('click', '.ion-close-circled', function () {
+        $(this).closest("li").remove();
+        var tabHref = $(this).parent().attr('href');
+        $(tabHref).remove();
+
+        var last = $('.tabs li:last-child')[0];
+        var a = $(last).children()
+        a.addClass("active");
+
+        //....
+        return false;
+    });
+});

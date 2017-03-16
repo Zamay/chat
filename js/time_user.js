@@ -56,30 +56,4 @@ function user_time() {
 setInterval(user_time, 1000);
 
 
-// // add User для проверки .
-//
-// $(document).on('click', '.addUser', function () {
-//     var usersOnline = $(".list_user>ul>li").length + 1;
-//
-//     $('<li>', {}).appendTo('.list_user ul');
-//
-//     $('<a>', {
-//         class: 'user',
-//         href: '#tab' + usersOnline,
-//         text: 'New user ' + usersOnline
-//     }).appendTo('.list_user li:last');
-//
-//     $('<i>', {
-//         class: 'close_user',
-//         text: ' [x]'
-//     }).appendTo('.list_user li a:last');
-// });
-//
-// delete User
-// $(document).on('click', '.close_user', function () {
-//     $(this).parent().parent().remove();
-//
-// });
-
-
 
