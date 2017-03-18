@@ -21,21 +21,28 @@ body {
 .container {
 	width: 902px;
 	min-width: 700px;
-	height: 790px;
+	height: auto;
 	margin: 0 auto;
+	bottom: 30px;
+	position: relative;
 }
 
 /* Шапка */
 .header {
-	width: 860px;
+	width: 870px;
 	height: 80px;
 	background: #cfe2f3;
-	padding: 20px;
-	margin: 0 auto 30px;
+	padding: 15px;
+	margin: 0 auto 15px;
 	border: 1px solid;
 	border-radius: 3px;
 	margin-top: 40px;
+	float: left;
 }
+.header1{
+	width: 184px;
+}
+
 
 .online_for,
 .local_time,
@@ -44,7 +51,9 @@ body {
 	float: left;
 	clear: both;
 }
-
+.onlaine_for1{
+	font-size:15px;
+}
 .head_h4 {
 	float: right;
 	font-family: 'Rochester', cursive;
@@ -52,12 +61,15 @@ body {
 	color: #666;
 	letter-spacing: 2px;
 	text-transform: uppercase;
-	margin-top: -55px;
+	margin-top: -27px;
 
+}
+.head_h41{
+	display: none;
 }
 
 .edit_pers {
-	margin-top: 10px;
+	margin-top: 20px;
 }
 
 /* end header*/
@@ -69,17 +81,14 @@ body {
 
 /* left_bar */
 .left_bar {
-	width: 28%;
+	width: 24%;
 	height: 500px;
-	background: #cfe2f3;
 	float: left;
-	border: 1px solid;
-	border-radius: 3px;
+	clear: both;
 }
 
 .list_user {
-	height: 430px;
-	margin: 0 14px 14px;
+	height: 486px;
 	padding: 10px 0 10px 10px;
 	border: 1px solid;
 	border-radius: 3px;
@@ -87,6 +96,14 @@ body {
 	clear: both;
 	overflow-x: auto;
 }
+/* хром, сафари */
+.list_user::-webkit-scrollbar { width: 0; }
+.main_cont::-webkit-scrollbar { width: 0; }
+/* ie 10+ */
+.list_user { -ms-overflow-style: none; }
+.main_cont { -ms-overflow-style: none; }
+.list_user { overflow: -moz-scrollbars-none; }
+.main_cont { overflow: -moz-scrollbars-none; }
 
 .list_user ul {
 	list-style: none;
@@ -120,7 +137,7 @@ body {
 /* end left_bar */
 
 .main {
-	width: 70%;
+	width: 74%;
 	height: 640px;
 	float: right;
 }
@@ -132,18 +149,34 @@ body {
 	float: right;
 	/*border: 1px solid;*/
 }
+.container_menu{
+	margin-top: 0;
+}
+.container_menu1{
+	margin-top: -126px;
+}
 
+.foooter{
+	display: block;
+}
+.foooter1 {
+	display: none;
+	position: absolute;
+}
 /* tabs_cont */
 .main_cont {
 	width: 96%;
-	height: 305px;
+	height: 338px;
 	padding: 2%;
 	border: 1px solid;
-	border-radius: 3px;
+	border-radius: 0 0 3px 3px;
 	margin-bottom: 15px;
 	background: #cfe2f3;
 	position: relative;
 	overflow-x: auto;
+}
+.mein_cont1{
+	height: 464px;
 }
 
 #main_menu div {
@@ -182,9 +215,35 @@ body {
 }
 /*//--------------------------//*/
 .wrap-tabs {
-	max-height: 27px;
+	width: 100%;
+	height: 30px;
+	background: #efefef;
+	border: 1px solid;
+	border-bottom-style: none;
+	border-radius: 3px 3px 0 0;
 }
-
+.head_cont ul{
+	display: inline-block;
+	width: 100%;
+}
+.user_login{
+	display: inline-block;
+	width: 39%;
+	padding-left: 5px;
+	padding-top: 5px;
+}
+.name_chat{
+	display: inline-block;
+	width: 25%;
+	text-align: center;
+	padding-top: 5px;
+}
+.all_user{
+	display: inline-block;
+	float: right;
+	padding-right: 5px;
+	padding-top: 5px;
+}
 .main_menu {
 	margin-left: 14px;
 
@@ -261,13 +320,14 @@ body {
 /* ---- end --- >*/
 
 .editor {
-	height: 96px;
-	width: 600px;
+	height: 63px;
+	width: 638px;
 	padding: 15px;
 	border: 1px solid;
 	border-radius: 3px;
 	resize: none;
 	background: #cfe2f3;
+	overflow: hidden;
 
 }
 
@@ -329,13 +389,3 @@ textarea {
 .button:hover {
 	background: #fff;
 }
-
-
-
-
-
-
-
-
-
-
