@@ -1,7 +1,7 @@
 /**
  * Created by zamaj on 03.02.2017.
  */
-var urls = 'https://main-workspace-juggerr.c9users.io:8081';
+var urls = 'https://server-for-chat-mitya.c9users.io:8081';
 
 //login
 let userIdNow;
@@ -128,6 +128,7 @@ function respMess(data) {
         sameDay: '[Today]',
         nextDay: '[Tomorrow]',
         lastDay: '[Yesterday]',
+        lastWeek: '[Last] dddd',
         sameElse: 'MMMM Do'
     })
 

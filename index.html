@@ -1,128 +1,128 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chat</title>
-    <link rel="stylesheet" href="css/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/modal.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+	<meta charset="UTF-8">
+	<meta name="viewport"
+				content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Chat</title>
+	<link rel="stylesheet" href="css/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/login.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/modal.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 <body>
 <div class="container">
-<!--     <div class="body_login">
-        <div id="login">
-            <form action="javascript:void(0)" onsubmit="logine()" method="get">
-                <p>
+	<div class="body_login">
+		<div id="login">
+			<form action="javascript:void(0)" onsubmit="logine()" method="get">
+				<p>
                     <span class="fontawesome-user">
                         <i class="fa fa-user" aria-hidden="true"></i>
-                    </span> -->
-                    <!--<input type="text"  onKeyUp="if(/[^a-zA-Zа-яА-ЯёЁ]]/i.test(this.value)){this.value='';}" maxlength="15" required autofocus placeholder="Login" name ="username">-->
-<!--                     <input type="text" pattern="^[a-zA-Zа-яА-ЯёЁ][a-zA-Zа-яА-ЯёЁ0-9-_\.]{1,20}$"
-                           title="1)Первая всегда буква 2)Только буквы и цифры 3)Минимум 2 знака" required autofocus
-                           placeholder="Login" name="username">
-                </p> -->
-                <!--<p><span class="fontawesome-lock"></span><input type="password" name="password"  placeholder="Password"></p>-->
-<!--                 <p><input type="submit" value="ВОЙТИ" name="login"></p>
-            </form>
-        </div>
-    </div> -->
-    <!--   Шапка-->
-    <div class="header">
-        <div class="online_for">
-            <p>You are online for :</p>
-        </div>
-        <div class="local_time">
-            <p>Your local time is  :</p>
-        </div>
+                    </span>
+					<!--<input type="text"  onKeyUp="if(/[^a-zA-Zа-яА-ЯёЁ]]/i.test(this.value)){this.value='';}" maxlength="15" required autofocus placeholder="Login" name ="username">-->
+					<input type="text" pattern="^[a-zA-Zа-яА-ЯёЁ][a-zA-Zа-яА-ЯёЁ0-9-_\.]{1,20}$"
+								 title="1)Первая всегда буква 2)Только буквы и цифры 3)Минимум 2 знака" required autofocus
+								 placeholder="Login" name="username">
+				</p>
+				<!--<p><span class="fontawesome-lock"></span><input type="password" name="password"  placeholder="Password"></p>-->
+				<p><input type="submit" value="ВОЙТИ" name="login"></p>
+			</form>
+		</div>
+	</div>
+	<!--   Шапка-->
+	<div class="header">
+		<div class="online_for">
+			<p>You are online for :</p>
+		</div>
+		<div class="local_time">
+			<p>Your local time is :</p>
+		</div>
 
-        <a class="edit_pers" href="#openModal">Edit person info</a><br>
+		<a class="edit_pers" href="#openModal">Edit person info</a><br>
 
-        <div id="openModal" class="modalDialog">
-            <div>
-                <a href="#close" title="Закрыть" class="close">X</a>
-                <h2>Edit person info</h2>
-                <p>Современем Вы сможете отредактировать свой ник.</p>
-                <p>Так же сможете изменить картинку.</p>
-                <p>Будет ли тут пароль - еще неизвестно.</p>
-                <p>Что то еще.</p>
-            </div>
-        </div>
+		<div id="openModal" class="modalDialog">
+			<div>
+				<a href="#close" title="Закрыть" class="close">X</a>
+				<h2>Edit person info</h2>
+				<p>Современем Вы сможете отредактировать свой ник.</p>
+				<p>Так же сможете изменить картинку.</p>
+				<p>Будет ли тут пароль - еще неизвестно.</p>
+				<p>Что то еще.</p>
+			</div>
+		</div>
 
-        <p class="privat_mes"> Private massages (3)</p>
-        <h4 class="head_h4">My chat name</h4>
-    </div>
+		<p class="privat_mes"> Private massages (3)</p>
+		<h4 class="head_h4">My chat name</h4>
+	</div>
 
-    <!-- Left bar -->
-    <div class="left_bar">
-        <span class="__login"></span>
-        <p class="online">Online :</p>
-        <!--<i title="add User" class="addUser">+</i>-->
-        <div class="list_user">
-            <ul>
-                <!--<li><a href="#tab1" class="user">Jowh Brein</a><span class="status on"> online</span></li>-->
-            </ul>
-        </div>
-    </div>
+	<!-- Left bar -->
+	<div class="left_bar">
+		<span class="__login"></span>
+		<p class="online">Online :</p>
+		<!--<i title="add User" class="addUser">+</i>-->
+		<div class="list_user">
+			<ul>
+				<!--<li><a href="#tab1" class="user">Jowh Brein</a><span class="status on"> online</span></li>-->
+			</ul>
+		</div>
+	</div>
 
-    <!-- main -->
-    <div class="main">
-        <!-- закладки -->
-        <div class="tab-container">
+	<!-- main -->
+	<div class="main">
+		<!-- закладки -->
+		<div class="tab-container">
 
-            <!--tabs-->
-            <div class="wrap-tabs">
-                <ul class="tabs">
-                    <li class="main_menu">
-                        <a href="#main_menu">Mein menu</a>
-                    </li>
-                    <!--<li class="tab1">-->
-                        <!--<a href="#tab1">Jowh Brein <i class="ion-close-circled"></i></a>-->
-                    <!--</li>-->
-                </ul>
-            </div>
+			<!--tabs-->
+			<div class="wrap-tabs">
+				<ul class="tabs">
+					<li class="main_menu">
+						<a href="#main_menu">Mein menu</a>
+					</li>
+					<!--<li class="tab1">-->
+					<!--<a href="#tab1">Jowh Brein <i class="ion-close-circled"></i></a>-->
+					<!--</li>-->
+				</ul>
+			</div>
 
-            <!-- Контент -->
-            <div class="main_cont">
-                <div class="wrap-tab-content">
-                    <div id="main_menu">
-                        <!--<p><b>Jogn Snow:</b> Hi!</p>-->
-                    </div>
-                    <!--<div id="tab1">-->
-                        <!--<p><b>Jowh Brein:</b> Hi!</p>-->
-                    <!--</div>-->
-                </div>
-            </div>
+			<!-- Контент -->
+			<div class="main_cont">
+				<div class="wrap-tab-content">
+					<div id="main_menu">
+						<!--<p><b>Jogn Snow:</b> Hi!</p>-->
+					</div>
+					<!--<div id="tab1">-->
+					<!--<p><b>Jowh Brein:</b> Hi!</p>-->
+					<!--</div>-->
+				</div>
+			</div>
 
-            <div class="editor" id="editor" onmousedown="text_button()" contenteditable></div>
+			<div class="editor" id="editor" onmousedown="text_button()" contenteditable></div>
 
-            <!--footer-->
-            <div class="info">
-                <ul>
-                    <li class="info_">0 characters entered</li>
-                    <li class="info_">0 letters entered</li>
-                    <li class="info_">0 whitespace characters entered</li>
-                    <li class="info_">0 punttuation marks entered</li>
-                </ul>
-            </div>
+			<!--footer-->
+			<div class="info">
+				<ul>
+					<li class="info_">0 characters entered</li>
+					<li class="info_">0 letters entered</li>
+					<li class="info_">0 whitespace characters entered</li>
+					<li class="info_">0 punttuation marks entered</li>
+				</ul>
+			</div>
 
-            <!-- кнопки  -->
-            <div class="toolbar">
-                <button type="button" class="btn" data-func="bold"><i class="fa fa-bold"></i></button>
-                <button type="button" class="btn" data-func="italic"><i class="fa fa-italic"></i></button>
-                <button type="button" class="btn" data-func="underline"><i class="fa fa-underline"></i></button>
-                <button type="button" class="btn" data-func="createLink">Link</button>
-            </div>
+			<!-- кнопки  -->
+			<div class="toolbar">
+				<button type="button" class="btn" data-func="bold"><i class="fa fa-bold"></i></button>
+				<button type="button" class="btn" data-func="italic"><i class="fa fa-italic"></i></button>
+				<button type="button" class="btn" data-func="underline"><i class="fa fa-underline"></i></button>
+				<button type="button" class="btn" data-func="createLink">Link</button>
+			</div>
 
-            <!--Отправить-->
-            <button type="button" class="button" name="sendMess">Send</button>
+			<!--Отправить-->
+			<button type="button" class="button" name="sendMess">Send</button>
 
-        </div>
-    </div>
+		</div>
+	</div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
