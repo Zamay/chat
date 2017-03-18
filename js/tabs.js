@@ -3,6 +3,7 @@
  */
 var urls = 'https://server-for-chat-mitya.c9users.io:8081';
 
+
 //login
 let userIdNow;
 const username = document.querySelector("input[name=username]");
@@ -18,8 +19,11 @@ function logine() {
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            $(".__login").html(data.username);
-            userIdNow = data.id;
+            console.log(data)
+            $(".user_login").html("Your name: " + data.username);
+            if (data.id) userIdNow = data.id;
+            if (data.user_id) userIdNow = data.user_id;
+            console.log(userIdNow)
         },
         error: function (data, status) {
             console.log(data, status);
@@ -92,6 +96,43 @@ function messages() {
 messages()
 setInterval(messages, 3000);
 
+
+document.addEventListener('DOMContentLoaded', e => {
+    document.querySelector('#editor').addEventListener('keydown', function(e){
+        if('key' in e){
+            if(e.key.toLowerCase() !== 'enter') // Если свойство KeyboardEvent.key не равно enter - выходим
+                return;
+        }else{
+            if(e.keyCode !== 13) // Более грубое, но более поддерживаемое свойство, 13 - enter
+                return;
+        }
+
+        // Иначе убираем поведение браузера и делаем свои делишки
+        e.preventDefault();
+        $.ajax({
+            url: urls + '/messages',
+            type: "POST",
+            data: JSON.stringify(
+                {
+                    "user_id": String(userIdNow),
+                    "message": $('#editor').html(),
+                    "datetime": new Date()
+                }
+            ),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $('#editor').html('');
+                console.log(data);
+            },
+            error: function (data, status) {
+                console.log(data, status);
+            }
+        });
+    });
+});
+
+
 // отправка сообщений
 $('button[name="sendMess"]').click(function(){
     $.ajax({
@@ -128,25 +169,27 @@ function respMess(data) {
         sameDay: '[Today]',
         nextDay: '[Tomorrow]',
         lastDay: '[Yesterday]',
-        lastWeek: '[Last] dddd',
         sameElse: 'MMMM Do'
     })
 
-    console.log($('.day_container').data('date') == `${dateMes}`)
-    if ($('.day_container').data('date') == `${dateMes}`) {
-        $(`<p><b>${userName}:</b> ${data.message} <span style="float: right">${time}</span></p>`).appendTo($('.day_msgs'));
-    } else {
-        $(`
-            <div class="day_container" data-date="${dateMes}">
-              <div class="day_divider" >
-                  <span>${dateMess}</span>
-              </div>
-              <div class="day_msgs">
-                <p><b>${userName}:</b> ${data.message} <span style="float: right">${time}</span></p>
-              </div>
-            </div>`).appendTo(messages);
-    }
-    $(".main_cont").scrollTop(2000);
+    // $(`<p><b>${userName}:</b> ${data.message} <span style="float: right">${time}</span></p>`).appendTo($('.main_menu'));
+    $('#main_menu').append(`<p><b>${userName}:</b> ${data.message} <span style="float: right">${time}</span></p>`)
+
+    // console.log($('.day_container').data('date') == `${dateMes}`)
+    // if ($('.day_container').data('date') == `${dateMes}`) {
+    //     $(`<p><b>${userName}:</b> ${data.message} <span style="float: right">${time}</span></p>`).appendTo($('.day_msgs'));
+    // } else {
+    //     $(`
+    //         <div class="day_container" data-date="${dateMes}">
+    //           <div class="day_divider" >
+    //               <span>${dateMess}</span>
+    //           </div>
+    //           <div class="day_msgs">
+    //             <p><b>${userName}:</b> ${data.message} <span style="float: right">${time}</span></p>
+    //           </div>
+    //         </div>`).appendTo(messages);
+    // }
+     $(".main_cont").scrollTop(2000);
 }
 
 
@@ -162,80 +205,3 @@ function resUserMes(users, mesUserId) {
 
     return userName;
 }
-
-
-$(function () {
-
-    $(".wrap-tab-content div").hide();
-    $(".tabs li a").removeClass("active");
-    $(".main_menu a").addClass("active");
-
-    if ($(".main_menu a").hasClass("active")) {
-        $(".wrap-tab-content #main_menu").show();
-    }
-
-    $(document).on('click', '.user', function () {
-        if ($('.wrap-tab-content div').is(this.hash)) {
-            $(".wrap-tab-content div").hide();
-            $(this.hash).show();
-
-
-            //....
-            return false;
-        } else {
-
-            if ($(".tabs li a").length >= 7) {
-                alert('Close tabs! Limit 7');
-            }
-            else {
-                //createTab();
-                countTabs = parseInt($(".tabs li a").length) + 1;
-
-                $(".wrap-tab-content div").hide();
-                $(".tabs li a").removeClass("active");
-
-                $('<li>', {
-                    class: 'tab'
-                }).appendTo('.tabs');
-
-                $('<a>', {
-                    href: this.hash.replace('', ''),
-                    text: 'UserMane'// Значение нажатой вкладки слева --- this
-                }).appendTo('.tabs li:last').addClass("active");
-
-                $('<i>', {
-                    class: 'ion-close-circled'
-                }).appendTo('.tabs li a:last');
-
-                $('<div>', {
-                    id: this.hash.replace('#', '')
-                }).text('New div id: ' + this.hash).appendTo('.wrap-tab-content');
-            }
-            return false;
-        }
-    });
-
-
-    $(document).on('click', '.tabs li a', function () {
-        $(".wrap-tab-content").children().hide();
-        $(this.hash).show();
-        $(".tabs li a").removeClass("active");
-        $(this).addClass("active");
-
-        return false;
-    });
-
-
-    $(document).on('click', '.ion-close-circled', function () {
-        $(this).closest("li").remove();
-        var tabHref = $(this).parent().attr('href');
-        $(tabHref).remove();
-
-        var last = $('.tabs li:last-child')[0];
-        var a = $(last).children()
-        a.addClass("active");
-
-        //....
-        return false;
-    });
-});
