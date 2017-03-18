@@ -7,7 +7,7 @@ window.onload = function () {
     //пользователей онлайн
     (function () {
         var usersOnline = $(".list_user>ul>li").length;
-        $(".online")['0'].innerHTML = ("Online: " + usersOnline );
+        $(".all_user").html("All Users: " + usersOnline );
         setTimeout(arguments.callee, 1);
     })();
 
@@ -54,6 +54,3 @@ function user_time() {
 }
 
 setInterval(user_time, 1000);
-
-
-
