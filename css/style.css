@@ -163,6 +163,13 @@ body {
 	display: none;
 	position: absolute;
 }
+
+.online_for{
+
+}
+.online_for1{
+	font-size:15px;
+}
 /* tabs_cont */
 .main_cont {
 	width: 96%;

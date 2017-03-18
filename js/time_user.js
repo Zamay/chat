@@ -52,5 +52,5 @@ function user_time() {
     $('.online_for').html("You are online for : " + moment(date).toNow(true));
     $('.local_time p').html("Your local time is : " + moment().format('H:mm:ss'));
 }
-
 setInterval(user_time, 1000);
+

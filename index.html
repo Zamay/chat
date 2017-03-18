@@ -48,8 +48,23 @@
             <div id="openModal" class="modalDialog">
                 <div>
                     <a href="#close" title="Закрыть" class="close">X</a>
-
-
+										<div class="container_switch">
+											<div class="switch-box is-primary">
+												<input id="primary" class="switch-box-input" type="checkbox" checked />
+												<label for="primary" class="switch-box-slider"></label>
+												<label for="primary" class="switch-box-label">Убрать footer</label>
+											</div>
+											<div class="switch-box is-info">
+												<input id="info" class="switch-box-input" type="checkbox" checked />
+												<label for="info" class="switch-box-slider"></label>
+												<label for="info" class="switch-box-label">Убрать header</label>
+											</div>
+											<div class="switch-box is-danger">
+												<input id="danger" class="switch-box-input" type="checkbox" checked />
+												<label for="danger" class="switch-box-slider"></label>
+												<label for="danger" class="switch-box-label">Убрать все</label>
+											</div>
+										</div>
                 </div>
             </div>
         </div>
@@ -128,22 +143,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
 <!--<script src="js/cookie.js"></script>-->
 <script>
-//    $(".show_head").click(function(){
-//        $(".head_h4").toggleClass("head_h41");
-//        $(".header").toggleClass("header1");
-//        $(".container_menu").toggleClass("container_menu1");
-//        $(".main_cont").toggleClass("mein_cont1");
-//        $(".online_for .local_time").toggleClass("online_for1");
-//    });
-    //----------------//
-//    $(".show_head").click(function(){
-//        $(".foooter").toggleClass("foooter1");
-//    });
+    $(".container_switch #info").click(function(){
+        $(".head_h4").toggleClass("head_h41");
+        $(".header").toggleClass("header1");
+        $(".container_menu").toggleClass("container_menu1");
+        $(".main_cont").toggleClass("mein_cont1");
+        $(".online_for .local_time").toggleClass("online_for1");
+    });
+    // ----------------//
+    $(".container_switch #primary").click(function(){
+        $(".foooter").toggleClass("foooter1");
+    });
 
-    //-----------------------//
-//    $(".show_head").click(function(){
-//
-//    });
+    // -----------------------//
+    $(".show_head").click(function(){
+
+    });
 </script>
 <script src="js/time_user.js"></script>
 <script src="js/tabs.js"></script>
