@@ -26,7 +26,9 @@ body {
 	bottom: 30px;
 	position: relative;
 }
-
+.container1{
+	margin: 10% auto;
+}
 /* Шапка */
 .header {
 	width: 870px;
@@ -69,7 +71,7 @@ body {
 }
 
 .edit_pers {
-	margin-top: 20px;
+	margin-top: 10px;
 }
 
 /* end header*/
@@ -138,8 +140,32 @@ body {
 
 .main {
 	width: 74%;
-	height: 640px;
 	float: right;
+}
+.main1{
+	float: none;
+	margin: 0 auto;
+}
+.setting_menu{
+	width: auto;
+	min-width: 140px;
+	background: #efefef;
+	position: absolute;
+	z-index: 9999;
+	border-bottom: 1px solid;
+	border-left: 1px solid;
+	border-radius: 0 0 0 3px;
+	right: 0px;
+	margin-top: 32px;
+	padding-left: 0px;
+	display: none;
+}
+.setting_menu p ,
+.setting_menu a {
+	padding: 3px;
+}
+.setting_menu1{
+	display: block;
 }
 
 /*head tags*/
@@ -155,17 +181,18 @@ body {
 .container_menu1{
 	margin-top: -126px;
 }
-
+.setting_menu2{
+	margin-top: -94px;
+}
+.setting_menu3{
+	margin-right: 117px;
+}
 .foooter{
 	display: block;
 }
 .foooter1 {
 	display: none;
-	position: absolute;
-}
-
-.online_for{
-
+	/*position: absolute;*/
 }
 .online_for1{
 	font-size:15px;
@@ -186,7 +213,7 @@ body {
 	height: 464px;
 }
 
-#main_menu div {
+#main_menu p {
 	clear: both;
 }
 /*//-----------------------------------//*/
@@ -250,6 +277,7 @@ body {
 	float: right;
 	padding-right: 5px;
 	padding-top: 5px;
+	cursor: pointer;
 }
 .main_menu {
 	margin-left: 14px;

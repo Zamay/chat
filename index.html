@@ -1,163 +1,179 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chat</title>
-    <link rel="stylesheet" href="css/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/modal.css">
-    <link rel="stylesheet" href="css/modals.scss">
-    <link rel="stylesheet" href="css/modals.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+	<meta charset="UTF-8">
+	<meta name="viewport"
+				content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Chat</title>
+	<link rel="stylesheet" href="css/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/login.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/modal.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 <body>
 <div class="container">
-    <div class="body_login">
-        <div id="login">
-            <form action="javascript:void(0)" onsubmit="logine()" method="get">
-                <p>
-                    <span class="fontawesome-user">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                    </span>
-                    <!--<input type="text"  onKeyUp="if(/[^a-zA-Zа-яА-ЯёЁ]]/i.test(this.value)){this.value='';}" maxlength="15" required autofocus placeholder="Login" name ="username">-->
-                    <input type="text" pattern="^[a-zA-Zа-яА-ЯёЁ][a-zA-Zа-яА-ЯёЁ0-9-_\.]{1,20}$"
-                           title="1)Первая всегда буква 2)Только буквы и цифры 3)Минимум 2 знака" required autofocus
-                           placeholder="Login" name="username">
-                </p>
-                <!--<p><span class="fontawesome-lock"></span><input type="password" name="password"  placeholder="Password"></p>-->
-                <p><input type="submit" value="ВОЙТИ" name="login"></p>
-            </form>
-        </div>
-    </div>
-    <!--   Шапка-->
-    <div class="header">
-        <div class="min_head">
-            <div class="online_for">
-                <p>You are online for :</p>
-            </div>
-            <div class="local_time">
-                <p>Your local time is  :</p>
-            </div>
+	<div class="body_login">
+		<div id="login">
+			<form action="javascript:void(0)" onsubmit="logine()" method="get">
+				<p>
+	<span class="fontawesome-user">
+	<i class="fa fa-user" aria-hidden="true"></i>
+	</span>
+					<!--<input type="text"  onKeyUp="if(/[^a-zA-Zа-яА-ЯёЁ]]/i.test(this.value)){this.value='';}" maxlength="15" required autofocus placeholder="Login" name ="username">-->
+					<input type="text" pattern="^[a-zA-Zа-яА-ЯёЁ][a-zA-Zа-яА-ЯёЁ0-9-_\.]{1,20}$"
+								 title="1)Первая всегда буква 2)Только буквы и цифры 3)Минимум 2 знака" required autofocus
+								 placeholder="Login" name="username">
+				</p>
+				<!--<p><span class="fontawesome-lock"></span><input type="password" name="password"  placeholder="Password"></p>-->
+				<p><input type="submit" value="ВОЙТИ" name="login"></p>
+			</form>
+		</div>
+	</div>
+	<!--   Шапка-->
+	<div class="header">
+		<div class="min_head">
+			<div class="online_for">
+				<p>You are online for :</p>
+			</div>
+			<div class="local_time">
+				<p>Your local time is :</p>
+			</div>
 
-            <a class="edit_pers" href="#openModal">Edit person info</a><br>
+			<a class="edit_pers" href="#openModal">Setting</a>
 
-            <div id="openModal" class="modalDialog">
-                <div>
-                    <a href="#close" title="Закрыть" class="close">X</a>
-										<div class="container_switch">
-											<div class="switch-box is-primary">
-												<input id="primary" class="switch-box-input" type="checkbox" checked />
-												<label for="primary" class="switch-box-slider"></label>
-												<label for="primary" class="switch-box-label">Убрать footer</label>
-											</div>
-											<div class="switch-box is-info">
-												<input id="info" class="switch-box-input" type="checkbox" checked />
-												<label for="info" class="switch-box-slider"></label>
-												<label for="info" class="switch-box-label">Убрать header</label>
-											</div>
-											<div class="switch-box is-danger">
-												<input id="danger" class="switch-box-input" type="checkbox" checked />
-												<label for="danger" class="switch-box-slider"></label>
-												<label for="danger" class="switch-box-label">Убрать все</label>
-											</div>
-										</div>
-                </div>
-            </div>
-        </div>
+		</div>
 
-        <h4 class="head_h4">My chat name</h4>
-    </div>
+		<h4 class="head_h4">My chat name</h4>
+	</div>
+	<div id="openModal" class="modalDialog">
+		<div>
+			<a href="#close" title="Закрыть" class="close">X</a>
+			<div class="container_switch">
+				<div class="switch-box is-primary">
+					<input id="primary" class="switch-box-input" type="checkbox" checked/>
+					<label for="primary" class="switch-box-slider"></label>
+					<label for="primary" class="switch-box-label">Убрать footer</label>
+				</div>
+				<div class="switch-box is-info">
+					<input id="info" class="switch-box-input" type="checkbox" checked/>
+					<label for="info" class="switch-box-slider"></label>
+					<label for="info" class="switch-box-label">Убрать header</label>
+				</div>
+				<div class="switch-box is-danger">
+					<label for="danger" class="switch-box-label">или</label>
+				</div>
+				<div class="switch-box is-danger">
+					<input id="danger" class="switch-box-input" type="checkbox" checked/>
+					<label for="danger" class="switch-box-slider"></label>
+					<label for="danger" class="switch-box-label">Убрать все</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Left bar -->
+	<div class="left_bar">
+		<div class="list_user">
+			<ul>
+				<!--<li><a href="#tab1" class="user">Jowh Brein</a><span class="status on"> online</span></li>-->
+			</ul>
+		</div>
+	</div>
 
-    <!-- Left bar -->
-    <div class="left_bar">
-        <div class="list_user">
-            <ul>
-                <!--<li><a href="#tab1" class="user">Jowh Brein</a><span class="status on"> online</span></li>-->
-            </ul>
-        </div>
-    </div>
+	<!-- main -->
+	<div class="main">
+		<!-- закладки -->
+		<div class="tab-container">
+			<div class="setting_menu">
+				<p class="onlaine_user"></p>
+				<hr>
+				<p class="time"></p>
+				<hr>
+				<a href="#openModal">Setting</a>
+			</div>
+			<!--tabs-->
+			<div class="container_menu">
+				<div class="wrap-tabs">
+					<div class="head_cont">
+						<ul>
+							<li class="user_login">Your name:</li>
+							<li class="name_chat">Main menu</li>
+							<li class="all_user">All Users:</li>
+						</ul>
+					</div>
+				</div>
 
-    <!-- main -->
-    <div class="main">
-        <!-- закладки -->
-        <div class="tab-container">
+				<!-- Контент -->
+				<div class="main_cont">
+					<div class="wrap-tab-content">
+						<div id="main_menu">
+							<!--<p><b>Jogn Snow:</b> Hi!</p>-->
+						</div>
+						<!--<div id="tab1">-->
+						<!--<p><b>Jowh Brein:</b> Hi!</p>-->
+						<!--</div>-->
+					</div>
+				</div>
+			</div>
+			<div class="container_text">
+				<div class="editor" id="editor" onmousedown="text_button()" contenteditable></div>
 
-            <!--tabs-->
-            <div class="container_menu">
-                <div class="wrap-tabs">
-                    <div class="head_cont">
-                        <ul>
-                            <li class="user_login">Your name: </li>
-                            <li class="name_chat">Main menu</li>
-                            <li class="all_user">All Users: </li>
-                        </ul>
-                    </div>
-                </div>
+				<!--footer-->
+				<div class="foooter">
+					<div class="info">
+						<ul>
+							<li class="info_">0 characters entered</li>
+							<li class="info_">0 letters entered</li>
+							<li class="info_">0 whitespace characters entered</li>
+							<li class="info_">0 punttuation marks entered</li>
+						</ul>
+					</div>
 
-                <!-- Контент -->
-                <div class="main_cont">
-                    <div class="wrap-tab-content">
-                        <div id="main_menu">
-                            <!--<p><b>Jogn Snow:</b> Hi!</p>-->
-                        </div>
-                        <!--<div id="tab1">-->
-                        <!--<p><b>Jowh Brein:</b> Hi!</p>-->
-                        <!--</div>-->
-                    </div>
-                </div>
-            </div>
-            <div class="container_text">
-                <div class="editor" id="editor" onmousedown="text_button()" contenteditable></div>
+					<!-- кнопки  -->
+					<div class="toolbar">
+						<button type="button" class="btn" data-func="bold"><i class="fa fa-bold"></i></button>
+						<button type="button" class="btn" data-func="italic"><i class="fa fa-italic"></i></button>
+						<button type="button" class="btn" data-func="underline"><i class="fa fa-underline"></i></button>
+						<button type="button" class="btn" data-func="createLink">Link</button>
+					</div>
 
-                <!--footer-->
-                <div class="foooter">
-                    <div class="info">
-                        <ul>
-                            <li class="info_">0 characters entered</li>
-                            <li class="info_">0 letters entered</li>
-                            <li class="info_">0 whitespace characters entered</li>
-                            <li class="info_">0 punttuation marks entered</li>
-                        </ul>
-                    </div>
-
-                    <!-- кнопки  -->
-                    <div class="toolbar">
-                        <button type="button" class="btn" data-func="bold"><i class="fa fa-bold"></i></button>
-                        <button type="button" class="btn" data-func="italic"><i class="fa fa-italic"></i></button>
-                        <button type="button" class="btn" data-func="underline"><i class="fa fa-underline"></i></button>
-                        <button type="button" class="btn" data-func="createLink">Link</button>
-                    </div>
-
-                    <!--Отправить-->
-                    <button type="button" class="button" name="sendMess">Send</button>
-                </div>
-            </div>
-        </div>
-    </div>
+					<!--Отправить-->
+					<button type="button" class="button" name="sendMess">Send</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
 <!--<script src="js/cookie.js"></script>-->
 <script>
-    $(".container_switch #info").click(function(){
+
+    $(".container_switch #info").click(function () {
         $(".head_h4").toggleClass("head_h41");
         $(".header").toggleClass("header1");
         $(".container_menu").toggleClass("container_menu1");
         $(".main_cont").toggleClass("mein_cont1");
         $(".online_for .local_time").toggleClass("online_for1");
+        $(".setting_menu").toggleClass("setting_menu2");
     });
-    // ----------------//
-    $(".container_switch #primary").click(function(){
+    // ------- footer ---------//
+    $(".container_switch #primary").click(function () {
         $(".foooter").toggleClass("foooter1");
     });
 
-    // -----------------------//
-    $(".show_head").click(function(){
+    // ----------- delete ------------//
+    $(".container_switch #danger").click(function () {
+        $(".foooter, .header, .left_bar ").toggleClass("foooter1");
+        $(".container").toggleClass("container1");
+        $(".main").toggleClass("main1");
+        $(".setting_menu").toggleClass("setting_menu3");
+    });
 
+    // ---------.header , .left_bar , --------------//
+    $(".all_user").click(function () {
+        $(".setting_menu").toggleClass("setting_menu1");
     });
 </script>
 <script src="js/time_user.js"></script>
