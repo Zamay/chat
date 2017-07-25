@@ -1,7 +1,7 @@
 /**
  * Created by zamaj on 03.02.2017.
  */
-var urls = 'https://server-for-chat-mitya.c9users.io:8080';
+var urls = 'https://server-for-chat-mitya.c9users.io';
 
 
 //login
